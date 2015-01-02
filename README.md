@@ -1,15 +1,15 @@
-# README #
+# My Environment #
 
 This repository is for my personal user in rapidly setting up my development environment and computer in general.
 
 ## Software ##
 
 ### Chrome
-    [](https://support.google.com/chrome/answer/95346?hl=en)
+[](https://support.google.com/chrome/answer/95346?hl=en)
 ### Drive
-    [](https://www.google.com/drive/download/)
+[](https://www.google.com/drive/download/)
 ### Music Manager
-    [](https://support.google.com/googleplay/answer/1229970?hl=en)
+[](https://support.google.com/googleplay/answer/1229970?hl=en)
 ### Homebrew ###
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ### Postgres
@@ -21,4 +21,4 @@ This repository is for my personal user in rapidly setting up my development env
 ### Vundle
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ### Postgres.app
-    [link](http://postgresapp.com/)
+[](http://postgresapp.com/)
