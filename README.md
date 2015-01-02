@@ -5,9 +5,9 @@ This repository is for my personal user in rapidly setting up my development env
 ## Software ##
 
 ### Chrome
-[](https://support.google.com/chrome/answer/95346?hl=en)
+[Download Chrome](https://support.google.com/chrome/answer/95346?hl=en)
 ### Drive
-[](https://www.google.com/drive/download/)
+[Download Drive](https://www.google.com/drive/download/ "Title")
 ### Music Manager
 [](https://support.google.com/googleplay/answer/1229970?hl=en)
 ### Homebrew ###
