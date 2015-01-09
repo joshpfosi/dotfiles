@@ -1,11 +1,13 @@
 # My Environment #
 
-This repository is for my personal user in rapidly setting up my development environment and computer in general.
+This repository is for my personal use in rapidly setting up my development environment and computer in general.
 
 ## Software
 
 #### Homebrew
      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#### NPM
+     brew install npm
 #### Postgres
     brew install postgresql
 #### RVM & Rails
