@@ -12,6 +12,8 @@ This repository is for my personal use in rapidly setting up my development envi
     brew install postgresql
 #### RVM & Rails
     \curl -sSL https://get.rvm.io | bash -s stable --rails
+#### Ember CLI
+    npm install -g ember-cli
 #### Macvim (brew install macvim)
     brew install macvim
 #### Vundle
