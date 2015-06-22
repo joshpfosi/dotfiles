@@ -15,6 +15,20 @@ Plugin 'Raimondi/delimitMate'
 " Latex plugin
 Plugin 'jcf/vim-latex'
 
+" Sublime-style fuzzy search
+Plugin 'kien/ctrlp.vim'
+
+" Handlebars support
+Plugin 'mustache/vim-mustache-handlebars'
+let g:mustache_abbreviations = 1 " turns on abbrevitations
+
+" Rubocop support: run :RuboCop in vim
+Plugin 'ngmy/vim-rubocop'
+let g:vimrubocop_config = '~/rubocop.yml'
+
+" Ino plugin for Arduino
+Plugin 'jplaut/vim-arduino-ino'
+
 " Processing plugin
 Plugin 'sophacles/vim-processing'
 
@@ -28,6 +42,13 @@ Plugin 'scrooloose/nerdcommenter'
 " <map>cc to add regular comments (will nest)
 " add a number or highlight text to comment the next x lines or portion,
 " e.g., 5,cs to comment the next 5 lines
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+
+" Optional:
+Bundle "honza/vim-snippets"
 
 Plugin 'ervandew/supertab'
 " TAB = AUTOCOMPLETE. YAY.
@@ -77,6 +98,8 @@ set ignorecase      " default to case-insensitive
 set smartcase       " case sensitive when search includes caps
 set matchtime=5     
 
+" set textwidth=80
+
 " deletes parameters in next and previous parenthesis respectively
 onoremap in( :<C-U>normal! f(vi(<CR>
 onoremap il( :<C-U>normal! F)vi(<CR>
@@ -97,12 +120,10 @@ set expandtab
 set shiftround
 set preserveindent
 
-" c/c++ indentation and commenting
-au FileType,BufNewFile,BufRead h,c,cpp setlocal tabstop=8
-au FileType,BufNewFile,BufRead h,c,cpp setlocal softtabstop=8
-au FileType,BufNewFile,BufRead h,c,cpp setlocal shiftwidth=8
-au FileType,BufNewFile,BufRead h,c,cpp inoremap // /**/<Left><Left>
-au FileType,BufNewFile,BufRead h,c,cpp inoremap /// /* debugging */
+" tab setting
+au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal tabstop=4
+au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal softtabstop=4
+au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal shiftwidth=4
 
 " limits width for c and c++ files
 au FileType h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
@@ -116,9 +137,13 @@ au BufNewFile *.tex set filetype=tex
 au BufNewFile *.tex TTemplate comp170
 
 au BufNewFile,BufRead *.hbs set filetype=html
+au BufNewFile,BufRead *.handlebars set filetype=html
+au BufNewFile,BufRead *.erb set filetype=html
+
+au BufNewFile,BufRead *.html set spell
 
 " <map>,w for rapid save and compile
-noremap <Leader>w :wa<CR>:!compile<CR>
+noremap <Leader>w :wa<CR>:!ino build<CR>
 
 " woohoo SYNTAX COLOURS
 syntax on
@@ -196,7 +221,12 @@ let syntastic_cpp_checkers=["gcc.vim"]
 let syntastic_scss_checkers=["scss.vim"] 
 let syntastic_haml_checkers=["haml.vim"] 
 let syntastic_javascript_checkers=["javascript.vim"] 
+let g:syntastic_ruby_checkers=['rubocop', 'mri']
+let g:syntastic_ruby_rubocop_exec="~/rubocop.sh"
 
 " quickly open and souce vimrc
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
+autocmd Filetype gitcommit setlocal spell textwidth=72
+" set spelling and text-width for git commit messages
