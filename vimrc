@@ -9,11 +9,17 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/vundle'
 
+Plugin 'editorconfig/editorconfig-vim'
+" adds support for .editorconfig files
+
 Plugin 'Raimondi/delimitMate'
 " auto-close brackets, quotes, etc.
 
 " Latex plugin
 Plugin 'jcf/vim-latex'
+
+" Emmet
+Plugin 'mattn/emmet-vim'
 
 " Sublime-style fuzzy search
 Plugin 'kien/ctrlp.vim'
@@ -60,7 +66,7 @@ Plugin 'tpope/vim-fugitive'
 " :Gstatus for Git status
 " :Gcommit <-m message> to commit
 
-" Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 " shortcuts for adding/changing quotes, brackets, and other surroundings
 
 Plugin 'scrooloose/nerdtree'
@@ -124,6 +130,10 @@ set preserveindent
 au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal tabstop=4
 au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal softtabstop=4
 au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal shiftwidth=4
+
+au FileType,BufNewFile,BufRead javascript setlocal tabstop=2
+au FileType,BufNewFile,BufRead javascript setlocal softtabstop=2
+au FileType,BufNewFile,BufRead javascript setlocal shiftwidth=2
 
 " limits width for c and c++ files
 au FileType h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
@@ -217,12 +227,11 @@ let NERDTreeShowHidden=0    " don't show hidden files ('I' toggles this)
 " DelimitMate
 let delimitMate_expand_cr=1
 " Syntastic
-let syntastic_cpp_checkers=["gcc.vim"] 
-let syntastic_scss_checkers=["scss.vim"] 
-let syntastic_haml_checkers=["haml.vim"] 
-let syntastic_javascript_checkers=["javascript.vim"] 
+let syntastic_cpp_checkers=['gcc.vim'] 
+let syntastic_scss_checkers=['scss.vim'] 
+let syntastic_haml_checkers=['haml.vim'] 
+let g:syntastic_javascript_checkers=['javascript.vim', 'jshint'] 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
-let g:syntastic_ruby_rubocop_exec="~/rubocop.sh"
 
 " quickly open and souce vimrc
 nnoremap <leader>ev :split $MYVIMRC<CR>

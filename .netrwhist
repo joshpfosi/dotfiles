@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/joshpfosi/jobs-tuftsdaily/rails/app/mailers'
+let g:netrw_dirhist_2='/Users/joshpfosi/shearwater/.git'
+let g:netrw_dirhist_3='/Users/joshpfosi/shearwater/ember/app/templates/authenticated'
+let g:netrw_dirhist_4='/Users/joshpfosi/shearwater/ember/app/routes/authenticated'
+let g:netrw_dirhist_5='/Users/joshpfosi/shearwater/rails/app/views/mobiles'
+let g:netrw_dirhist_6='/Users/joshpfosi/lrm/selenium/config/environments'
+let g:netrw_dirhist_7='/Users/joshpfosi/core/spec'

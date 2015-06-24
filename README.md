@@ -20,6 +20,8 @@ This repository is for my personal use in rapidly setting up my development envi
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #### Rubocop (for Rails projects)
     gem install rubocop
+#### JSHint
+    npm install -g jshint
 
 #### Disabling HTC One M8 automount
 
