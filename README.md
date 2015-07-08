@@ -1,6 +1,6 @@
 # My Environment #
 
-This repository is for my personal use in rapidly setting up my development environment and computer in general.
+This repository is for my personal use in rapidly setting up my development environment and computer in general. `GOTCHAS.md` is a collection of random tidbits I've learned over time that I am trying to keep in one place. `rvmrc` and `vimrc` should obviously be moved to `~/.rvmrc` and `~/.vimrc`, respectively.
 
 ## Software
 
