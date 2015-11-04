@@ -10,6 +10,26 @@ Finally got around to writing a helpful readme for little gotchyas in web progra
 * Delete a branch: `git branch -d local_only_branch`
 * Delete a remote branch: `git push origin --delete remote_branch`
 * Remove files after adding to `.gitignore`: `git rm -r --cached some-directory`
+* Diffing two branches: `git diff branch_1..branch_2`
+
+## Renaming branches
+
+  git branch -m old_branch new_branch         # Rename branch locally    
+  git push origin :old_branch                 # Delete the old branch    
+  git push --set-upstream origin new_branch   # Push the new branch, set local branch to track the new remote
+
+## Git Rebase
+
+* http://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/
+
+### Editing Commits w/ Rebase
+
+* `git rebase -i` and set commit to `edit` over `pick`
+* `git reset HEAD^` to unstage all changes and recommit them as desired
+
+## Git SVN
+
+* Checkout remote branch: `git checkout -b <branch-name>-svn remotes/origin/<branch-name>`
 
 # RSpec
 
@@ -63,6 +83,7 @@ end
    obj[attr] == Model.first.my_attr
 
 * Downcasing: `string.downcase`
+* Suppressing stdout: $stdout = File.open(File::NULL, 'w')
 
 # FactoryGirl
 
@@ -84,20 +105,24 @@ end
 
 * Stack level too deep in controllers => Check the serializer to make sure you are not looping there
 
-# Git Rebase
-
-* http://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/
-
 # Search + Replace
 
 * `:vimgrep /path_to_command/gj ./**/*.rb`
 * `perl -pi -w -e 's/SEARCH_FOR/REPLACE_WITH/g;' *.txt`
+* Use `grep -A5` or `grep -B3` to return 5 lines after or 3 lines before a matching line
+
+# Finding files
+
+* Find all files recursively: `find $PWD -name '*.js'`
+
+# Acting on all files recursively: `for FILE in `find app/assets/javascripts/ -name '*.js'`; do <action> ; done`
 
 # Gems
 
 * Remove all gems: http://ruby-journal.com/how-to-uninstall-all-ruby-gems/
 * Making gems: http://guides.rubygems.org/make-your-own-gem/
+* Build a gem: `gem build <gemname>.gemspec`
 
-# Git SVN
+# Vim
 
-* Checkout remote branch: `git checkout -b <branch-name>-svn remotes/origin/<branch-name>`
+* Autowrap text to 80 lines: In Visual mode, type `gq`

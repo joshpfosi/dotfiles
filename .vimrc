@@ -12,6 +12,9 @@ Plugin 'gmarik/vundle'
 Plugin 'editorconfig/editorconfig-vim'
 " adds support for .editorconfig files
 
+Plugin 'pangloss/vim-javascript'
+" Javascript indent plugin
+
 Plugin 'Raimondi/delimitMate'
 " auto-close brackets, quotes, etc.
 
@@ -34,6 +37,10 @@ let g:vimrubocop_config = '~/rubocop.yml'
 
 " Ino plugin for Arduino
 Plugin 'jplaut/vim-arduino-ino'
+
+" Auto align hashes via highlighting and <Enter>:
+Plugin 'junegunn/vim-easy-align'
+vmap <Enter> <Plug>(EasyAlign)
 
 " Processing plugin
 Plugin 'sophacles/vim-processing'
@@ -104,7 +111,7 @@ set ignorecase      " default to case-insensitive
 set smartcase       " case sensitive when search includes caps
 set matchtime=5     
 
-" set textwidth=80
+set textwidth=80
 
 " deletes parameters in next and previous parenthesis respectively
 onoremap in( :<C-U>normal! f(vi(<CR>
@@ -135,9 +142,11 @@ au FileType,BufNewFile,BufRead javascript setlocal tabstop=2
 au FileType,BufNewFile,BufRead javascript setlocal softtabstop=2
 au FileType,BufNewFile,BufRead javascript setlocal shiftwidth=2
 
+au FileType,BufNewFile,BufRead md,*.tex setlocal textwidth=1000
+
 " limits width for c and c++ files
 au FileType h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
-au Filetype h,c,cpp match Overlength /\%81v.\+/
+au Filetype h,c,cpp,js match Overlength /\%81v.\+/
 
 " For 40-HW9 (syntax colours, etc.)
 au BufNewFile,BufRead *.ums,*.um set filetype=ums
@@ -230,7 +239,7 @@ let delimitMate_expand_cr=1
 let syntastic_cpp_checkers=['gcc.vim'] 
 let syntastic_scss_checkers=['scss.vim'] 
 let syntastic_haml_checkers=['haml.vim'] 
-let g:syntastic_javascript_checkers=['javascript.vim', 'jshint'] 
+let g:syntastic_javascript_checkers=['javascript.vim'] 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 
 " quickly open and souce vimrc
