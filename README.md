@@ -1,6 +1,17 @@
-# My Environment #
+# My Environment
 
 This repository is for my personal use in rapidly setting up my development environment and computer in general. `GOTCHAS.md` is a collection of random tidbits I've learned over time that I am trying to keep in one place. `rvmrc` and `vimrc` should obviously be moved to `~/.rvmrc` and `~/.vimrc`, respectively.
+
+## Installation
+
+Run
+
+```
+git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
+ln -s ~/.vim/.vimrc .vimrc && \
+ln -s ~/.vim/.rvmrc .rvmrc && \
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
 
 ## Software
 
@@ -37,3 +48,4 @@ Append `UUID=<UUID> none hfs rw,noauto` to the file and save
 * [Drive](https://www.google.com/drive/download/)
 * [Music Manager](https://support.google.com/googleplay/answer/1229970?hl=en)
 * [Postgres.app](http://postgresapp.com/)
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)

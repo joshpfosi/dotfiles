@@ -25,7 +25,6 @@ Finally got around to writing a helpful readme for little gotchyas in web progra
 ### Editing Commits w/ Rebase
 
 * `git rebase -i` and set commit to `edit` over `pick`
-* `git reset HEAD^` to unstage all changes and recommit them as desired
 
 ## Git SVN
 
@@ -126,3 +125,24 @@ end
 # Vim
 
 * Autowrap text to 80 lines: In Visual mode, type `gq`
+
+# Deploying (Juniper)
+
+```
+cd /tmp
+svn co https://tt-svn.juniper.net/svn/adp/projects/lrm/core/trunk lrm_trunk
+cd lrm_trunk
+bundle install
+```
+
+# cURL
+
+```
+while [[ `curl --fail -X POST -H "Content-Type: application/json" -d
+'{"health_event": {"comment": "Successfully updated resource 120567",
+"event_type": "SWEEP_OK", "resource_name": "coney"}, "_flat":true }'
+http://localhost:3000/lrm/core/health_event.json?_flat` ]]
+do
+  echo "SUCCESS"
+done
+```
