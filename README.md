@@ -7,7 +7,7 @@ This repository is for my personal use in rapidly setting up my development envi
 Run
 
 ```
-rm -rf .vim && \
+cd && rm -rf ~/.vim && \
 git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
 ln -sf ~/.vim/.vimrc .vimrc && \
 ln -sf ~/.vim/.rvmrc .rvmrc && \
