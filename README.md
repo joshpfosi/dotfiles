@@ -7,11 +7,15 @@ This repository is for my personal use in rapidly setting up my development envi
 Run
 
 ```
+rm -rf .vim && \
 git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
-ln -s ~/.vim/.vimrc .vimrc && \
-ln -s ~/.vim/.rvmrc .rvmrc && \
+ln -sf ~/.vim/.vimrc .vimrc && \
+ln -sf ~/.vim/.rvmrc .rvmrc && \
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
+
+Warning: This will obliterate your `.vim` directory, `.vimrc` and `.rvmrc`
+files if they exist.
 
 ## Software
 
