@@ -146,3 +146,13 @@ do
   echo "SUCCESS"
 done
 ```
+
+# Print over SSH
+
+* `cat filename | ssh host "lp -d destination -n copies -"`
+* e.g. `cat RoseRoyaltyEmceeScript.pdf | ssh jpfosi01@homework.cs.tufts.edu "lp -d hp116 -n 1 -"`
+
+# SSH Keys
+
+* http://www.ece.uci.edu/~chou/ssh-key.html
+* http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/

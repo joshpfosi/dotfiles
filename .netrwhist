@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/joshpfosi/.ssh'
+let g:netrw_dirhist_2='/Users/joshpfosi/Comp112/YCSB/memcached/src/main/java/com/yahoo/ycsb/db'
+let g:netrw_dirhist_3='/Users/joshpfosi/core/app/controllers'
