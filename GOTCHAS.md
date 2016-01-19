@@ -156,3 +156,8 @@ done
 
 * http://www.ece.uci.edu/~chou/ssh-key.html
 * http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/
+
+# Checking file descriptor limits (on Linux)
+
+* System-wide: `cat /proc/sys/fs/file-max`
+* User-specific: `limit` or `ulimit`
