@@ -24,6 +24,10 @@ Plugin 'jcf/vim-latex'
 " Emmet
 Plugin 'mattn/emmet-vim'
 
+" Easy tags
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+
 " Sublime-style fuzzy search
 Plugin 'kien/ctrlp.vim'
 
