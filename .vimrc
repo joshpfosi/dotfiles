@@ -146,7 +146,7 @@ au FileType,BufNewFile,BufRead javascript setlocal tabstop=2
 au FileType,BufNewFile,BufRead javascript setlocal softtabstop=2
 au FileType,BufNewFile,BufRead javascript setlocal shiftwidth=2
 
-au FileType,BufNewFile,BufRead md,*.tex setlocal textwidth=1000
+au FileType,BufNewFile,BufRead md setlocal textwidth=1000
 
 " limits width for c and c++ files
 au FileType h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929

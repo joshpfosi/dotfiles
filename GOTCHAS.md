@@ -29,6 +29,27 @@ Finally got around to writing a helpful readme for little gotchyas in web progra
 ## Git SVN
 
 * Checkout remote branch: `git checkout -b <branch-name>-svn remotes/origin/<branch-name>`
+* Going from a local feature branch to a remote SVN branch:
+
+```shell
+svn cp <url-to-svn-repo>/trunk <url-to-svn-repo>/branches/final-remote-name
+git svn fetch    # Sync w/ remote svn repo.
+git branch -r    # This should list final-remote-name.
+
+git checkout local-feature-branch   # This is the local branch where your prototype feature is committed.
+git checkout -b final-local-name    # This makes the local branch derived from your local feature branch that will eventually become the branch that tracks the remote svn branch.
+git svn info     # This will say you are following trunk.
+git rebase remotes/final-remote-name
+
+
+git log         # All of your feature commits should be on top, followed by the commit that created the svn branch, followed by trunk commits.
+git svn info    # This should now say you are following the svn branch, final-remote-name.
+
+git svn dcommit
+
+git branch -D local-feature-branch
+
+```
 
 # RSpec
 
@@ -161,3 +182,16 @@ done
 
 * System-wide: `cat /proc/sys/fs/file-max`
 * User-specific: `limit` or `ulimit`
+
+# CMake
+
+* Basic debug build:
+
+```shell
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
+```
+
+* Adding flags: `set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG=1")`
