@@ -26,7 +26,7 @@ Plugin 'mattn/emmet-vim'
 
 " Easy tags
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
 
 " Sublime-style fuzzy search
 Plugin 'kien/ctrlp.vim'
@@ -115,7 +115,7 @@ set ignorecase      " default to case-insensitive
 set smartcase       " case sensitive when search includes caps
 set matchtime=5     
 
-set textwidth=80
+set textwidth=85
 
 " deletes parameters in next and previous parenthesis respectively
 onoremap in( :<C-U>normal! f(vi(<CR>
@@ -130,17 +130,12 @@ set smarttab
 set autoindent
 set smartindent
 set cindent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=3
+set softtabstop=3
+set shiftwidth=3
 set expandtab
 set shiftround
 set preserveindent
-
-" tab setting
-au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal tabstop=4
-au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal softtabstop=4
-au FileType,BufNewFile,BufRead h,c,cpp,ino,arduino setlocal shiftwidth=4
 
 au FileType,BufNewFile,BufRead javascript setlocal tabstop=2
 au FileType,BufNewFile,BufRead javascript setlocal softtabstop=2
@@ -150,23 +145,16 @@ au FileType,BufNewFile,BufRead md setlocal textwidth=1000
 
 " limits width for c and c++ files
 au FileType h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
-au Filetype h,c,cpp,js match Overlength /\%81v.\+/
+au Filetype h,c,cpp,js match Overlength /\%86v.\+/
 
 " For 40-HW9 (syntax colours, etc.)
 au BufNewFile,BufRead *.ums,*.um set filetype=ums
 
-" For 170 LaTex homework
 au BufNewFile *.tex set filetype=tex
-au BufNewFile *.tex TTemplate comp170
 
 au BufNewFile,BufRead *.hbs set filetype=html
 au BufNewFile,BufRead *.handlebars set filetype=html
 au BufNewFile,BufRead *.erb set filetype=html
-
-au BufNewFile,BufRead *.html set spell
-
-" <map>,w for rapid save and compile
-noremap <Leader>w :wa<CR>:!ino build<CR>
 
 " woohoo SYNTAX COLOURS
 syntax on
@@ -228,7 +216,7 @@ map <Ctrl>w<up> <Ctrl>wk
 inoremap ,, <Tab>           " ,, works as a tab in insert mode if typed quickly
 
 " more bits and pieces
-set tags=tags;/             " some day I'll actually learn how to use tags
+set tags=tags;/
 set nomodeline
 
 " Bundle settings
