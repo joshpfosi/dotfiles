@@ -45,3 +45,4 @@ Append `UUID=<UUID> none hfs rw,noauto` to the file and save
 * [Postgres.app](http://postgresapp.com/)
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 -->
+* [Latex](http://tug.org/mactex/mactex-download.html)
