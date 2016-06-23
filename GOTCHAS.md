@@ -194,3 +194,9 @@ make
 ```
 
 * Adding flags: `set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG=1")`
+
+# tmux
+
+* Start a new tmux session in "control" mode which allows scrolling: `tmux -CC`
+* Detach by pressing Esc
+* Reattach to a running session `tmux -CC a`
