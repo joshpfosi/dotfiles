@@ -280,15 +280,30 @@ if has("cscope")
     " if you want the reverse search order.
     set csto=0
 
-    " add any cscope database in current directory
-    if filereadable("cscope.out")
-       cs add cscope.out  
-       " else add the database pointed to by environment variable 
-    endif
+    " By default, Cscope script adds cscope.out from Vim's current directory and from
+    " $CSCOPE_DB. However, if you start Vim from say ~/proj/src/a/b/c/, while
+    " cscope.out is at ~/proj/src/, that cscope.out won't be loaded automatically.
 
-    if filereadable("py_cscope.out")
-       cs add py_cscope.out  
-    endif
+    " For ctags, there is a nice trick: with the command :set tags=tags;/ Vim will
+    " look for tags file everywhere starting from the current directory up to the
+    " root.
+
+    " This tip provides the same "autoloading" functionality for Cscope
+    " source: http://vim.wikia.com/wiki/Autoloading_Cscope_Database
+    function! LoadCscope(filename)
+       let db = findfile(a:filename, ".;")
+
+       if (!empty(db))
+          let path = strpart(db, 0, match(db, "/" . a:filename . "$"))
+
+          set nocscopeverbose " suppress 'duplicate connection' error
+          exe "cs add " . db . " " . path
+          set cscopeverbose
+       endif
+    endfunction
+
+    au BufEnter /* call LoadCscope("cscope.out")
+    au BufEnter /* call LoadCscope("py_cscope.out")
 
     " show msg when any other cscope db added
     set cscopeverbose  
