@@ -137,9 +137,9 @@ set expandtab
 set shiftround
 set preserveindent
 
-au FileType,BufNewFile,BufRead javascript setlocal tabstop=2
-au FileType,BufNewFile,BufRead javascript setlocal softtabstop=2
-au FileType,BufNewFile,BufRead javascript setlocal shiftwidth=2
+au FileType,BufNewFile,BufRead javascript,*.m setlocal tabstop=2
+au FileType,BufNewFile,BufRead javascript,*.m setlocal softtabstop=2
+au FileType,BufNewFile,BufRead javascript,*.m setlocal shiftwidth=2
 
 au FileType,BufNewFile,BufRead md setlocal textwidth=1000
 
