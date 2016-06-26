@@ -49,7 +49,7 @@ vmap <Enter> <Plug>(EasyAlign)
 " Processing plugin
 Plugin 'sophacles/vim-processing'
 
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 " Syntastic is great but I never got around to figuring out how to
 " add more system directories, so we get in fights over Hanson modules
 
@@ -228,11 +228,11 @@ let NERDTreeShowHidden=0    " don't show hidden files ('I' toggles this)
 " DelimitMate
 let delimitMate_expand_cr=1
 " Syntastic
-let syntastic_cpp_checkers=['gcc.vim'] 
-let syntastic_scss_checkers=['scss.vim'] 
-let syntastic_haml_checkers=['haml.vim'] 
-let g:syntastic_javascript_checkers=['javascript.vim'] 
-let g:syntastic_ruby_checkers=['rubocop', 'mri']
+" let syntastic_cpp_checkers=['gcc.vim'] 
+" let syntastic_scss_checkers=['scss.vim'] 
+" let syntastic_haml_checkers=['haml.vim'] 
+" let g:syntastic_javascript_checkers=['javascript.vim'] 
+" let g:syntastic_ruby_checkers=['rubocop', 'mri']
 
 " quickly open and souce vimrc
 nnoremap <leader>ev :split $MYVIMRC<CR>
