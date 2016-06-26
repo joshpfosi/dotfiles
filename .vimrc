@@ -150,7 +150,8 @@ au Filetype h,c,cpp,js match Overlength /\%86v.\+/
 " For 40-HW9 (syntax colours, etc.)
 au BufNewFile,BufRead *.ums,*.um set filetype=ums
 
-au BufNewFile *.tex set filetype=tex
+au BufRead,BufNewFile *.tex set filetype=tex
+au BufRead,BufNewFile *.tac,*.tin,*.itin set filetype=cpp
 
 au BufNewFile,BufRead *.hbs set filetype=html
 au BufNewFile,BufRead *.handlebars set filetype=html
