@@ -31,6 +31,9 @@ Plugin 'xolox/vim-misc'
 " Sublime-style fuzzy search
 Plugin 'kien/ctrlp.vim'
 
+" Easily switching between source and header files
+Plugin 'vim-scripts/a.vim'
+
 " Handlebars support
 Plugin 'mustache/vim-mustache-handlebars'
 let g:mustache_abbreviations = 1 " turns on abbrevitations
