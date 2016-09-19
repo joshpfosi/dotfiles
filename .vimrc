@@ -33,6 +33,10 @@ Plugin 'kien/ctrlp.vim'
 
 " Easily switching between source and header files
 Plugin 'vim-scripts/a.vim'
+" Add support for TACC files
+silent! let g:alternateExtensionsDict['tac'] = "tin,itin"
+silent! let g:alternateExtensionsDict['tin'] = "tac"
+silent! let g:alternateExtensionsDict['itin'] = "tac"
 
 " Handlebars support
 Plugin 'mustache/vim-mustache-handlebars'
@@ -93,11 +97,6 @@ Plugin 'terryma/vim-multiple-cursors'
 " <Ctrl>-N to select subsequent instances of the current word
 " (and then use 'i', 'cw', etc. as you like)
 
-" Plugin 'a.vim'
-" toggle between header/source files (even if they don't exist yet!)
-" :A to toggle
-" :AS/:AV to toggle and split the window horizontally/vertically
-
 Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/vim-tomorrow-theme'
 " some colorschemes
@@ -145,8 +144,9 @@ au FileType,BufNewFile,BufRead javascript,*.m setlocal shiftwidth=2
 au FileType,BufNewFile,BufRead md setlocal textwidth=1000
 
 " limits width for c and c++ files
-au FileType h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
-au Filetype h,c,cpp,js match Overlength /\%86v.\+/
+au FileType py,h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
+au Filetype py,h,c,cpp,js match Overlength /\%85v.\+/
+set colorcolumn=86
 
 " For 40-HW9 (syntax colours, etc.)
 au BufNewFile,BufRead *.ums,*.um set filetype=ums
@@ -157,6 +157,9 @@ au BufRead,BufNewFile *.tac,*.tin,*.itin set filetype=cpp
 au BufNewFile,BufRead *.hbs set filetype=html
 au BufNewFile,BufRead *.handlebars set filetype=html
 au BufNewFile,BufRead *.erb set filetype=html
+
+" For gated files, we use tabs not spaces :(
+au BufNewFile,BufRead *.c,*.h setlocal noexpandtab
 
 " woohoo SYNTAX COLOURS
 syntax on
@@ -178,11 +181,11 @@ set whichwrap+=<,>,[,]
 set ch=2
 set history=100                 " remember stuff
 set undolevels=100              " remember more stuff
-set number                      " LINE NUMBERS
+" set number                      " LINE NUMBERS
 set ruler                       " show the current location in the command-line
 set scrolloff=5                 " keep some context visible
 set showmode
-set cmdheight=2                 " bigger command-line
+" set cmdheight=2                 " bigger command-line
 " set nomousehide               " uncomment if you're using a touchpad
                                 " and it's driving you insane
 
@@ -310,6 +313,8 @@ if has("cscope")
 
     " show msg when any other cscope db added
     set cscopeverbose  
+    " set csqf=s- " open "s" results in quickfix window (:copen) rather than
+                " command line
 
 
     """"""""""""" My cscope/vim key mappings
