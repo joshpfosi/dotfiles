@@ -127,6 +127,7 @@ end
 * `:vimgrep /path_to_command/gj ./**/*.rb`
 * `perl -pi -w -e 's/SEARCH_FOR/REPLACE_WITH/g;' *.txt`
 * Use `grep -A5` or `grep -B3` to return 5 lines after or 3 lines before a matching line
+* Open results from `grep` in vim: `grep -ilr <pattern> | xargs vim -o`
 
 # Finding files
 
@@ -200,3 +201,18 @@ make
 * Start a new tmux session in "control" mode which allows scrolling: `tmux -CC`
 * Detach by pressing Esc
 * Reattach to a running session `tmux -CC a`
+
+# Python
+
+* Great explanation of iterables vs generators: http://nvie.com/posts/iterators-vs-generators/
+
+# GDB
+
+* Clearing breakpoints: `clear <function|lineno>`
+* Conditional breakpoints: `b <break> if <cond>`
+* List threads: `info threads`
+* Switch threads: `thread <thread-id>`
+
+# Netstat
+
+* Determine which program is using which port `sudo netstat -tulpn`
