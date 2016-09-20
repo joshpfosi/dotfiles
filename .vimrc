@@ -233,11 +233,11 @@ let NERDTreeShowHidden=0    " don't show hidden files ('I' toggles this)
 " DelimitMate
 let delimitMate_expand_cr=1
 " Syntastic
-let syntastic_cpp_checkers=['gcc.vim'] 
-let syntastic_scss_checkers=['scss.vim'] 
-let syntastic_haml_checkers=['haml.vim'] 
-let g:syntastic_javascript_checkers=['javascript.vim'] 
-let g:syntastic_python_checkers=['pylint.vim'] 
+let syntastic_cpp_checkers=['gcc'] 
+let syntastic_scss_checkers=['scss'] 
+let syntastic_haml_checkers=['haml'] 
+let g:syntastic_javascript_checkers=['javascript'] 
+let g:syntastic_python_checkers=['pylint'] 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 
 " quickly open and souce vimrc
