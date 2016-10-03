@@ -201,13 +201,19 @@ set laststatus=2                " command-line statuses in ALL the windows
 set switchbuf=useopen           " jump to the requested buffer if it's open
 set eol                         " automatically add an EOL in non-binary files
 
-" Allow for easy buffer switching
+" Allow for easy window switching
 nnoremap <S-J> <C-W>j
 nnoremap <S-K> <C-W>k
 nnoremap <S-H> <C-W>h
 nnoremap <S-L> <C-W>l
 nnoremap <C-c> :2winc +<CR>
 nnoremap <C-a> :2winc -<CR>
+
+set splitright
+set splitbelow
+
+" for searching in visual blocks use Alt-/
+vnoremap s <Esc>/\%V
 
 " encoding...
 set encoding=utf-8
@@ -233,12 +239,26 @@ let NERDTreeShowHidden=0    " don't show hidden files ('I' toggles this)
 " DelimitMate
 let delimitMate_expand_cr=1
 " Syntastic
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" Syntax checkers
 let syntastic_cpp_checkers=['gcc'] 
 let syntastic_scss_checkers=['scss'] 
 let syntastic_haml_checkers=['haml'] 
 let g:syntastic_javascript_checkers=['javascript'] 
 let g:syntastic_python_checkers=['pylint'] 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
+
+nnoremap ]l :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<CR>
+
 
 " quickly open and souce vimrc
 nnoremap <leader>ev :split $MYVIMRC<CR>
