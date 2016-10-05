@@ -30,21 +30,18 @@ Plugin 'xolox/vim-misc'
 
 " Sublime-style fuzzy search
 Plugin 'kien/ctrlp.vim'
+let g:ctrlp_max_files=0
+let g:ctrlp_open_new_file='v' " open new window in vertical split
+
+" Dispatch background tasks neatly
+Plugin 'tpope/vim-dispatch'
 
 " Easily switching between source and header files
 Plugin 'vim-scripts/a.vim'
-" Add support for TACC files
-silent! let g:alternateExtensionsDict['tac'] = "tin,itin"
-silent! let g:alternateExtensionsDict['tin'] = "tac"
-silent! let g:alternateExtensionsDict['itin'] = "tac"
 
 " Handlebars support
 Plugin 'mustache/vim-mustache-handlebars'
 let g:mustache_abbreviations = 1 " turns on abbrevitations
-
-" Rubocop support: run :RuboCop in vim
-Plugin 'ngmy/vim-rubocop'
-let g:vimrubocop_config = '~/rubocop.yml'
 
 " Ino plugin for Arduino
 Plugin 'jplaut/vim-arduino-ino'
@@ -145,21 +142,16 @@ au FileType,BufNewFile,BufRead md setlocal textwidth=1000
 
 " limits width for c and c++ files
 au FileType py,h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
-au Filetype py,h,c,cpp,js match Overlength /\%85v.\+/
-set colorcolumn=86
+au Filetype py,h,c,cpp,js match Overlength /\%80v.\+/
+set colorcolumn=81
 
 " For 40-HW9 (syntax colours, etc.)
 au BufNewFile,BufRead *.ums,*.um set filetype=ums
 
 au BufRead,BufNewFile *.tex set filetype=tex
-au BufRead,BufNewFile *.tac,*.tin,*.itin set filetype=cpp
-
 au BufNewFile,BufRead *.hbs set filetype=html
 au BufNewFile,BufRead *.handlebars set filetype=html
 au BufNewFile,BufRead *.erb set filetype=html
-
-" For gated files, we use tabs not spaces :(
-au BufNewFile,BufRead *.c,*.h setlocal noexpandtab
 
 " woohoo SYNTAX COLOURS
 syntax on
@@ -185,7 +177,6 @@ set undolevels=100              " remember more stuff
 set ruler                       " show the current location in the command-line
 set scrolloff=5                 " keep some context visible
 set showmode
-" set cmdheight=2                 " bigger command-line
 " set nomousehide               " uncomment if you're using a touchpad
                                 " and it's driving you insane
 
@@ -209,15 +200,19 @@ nnoremap <S-L> <C-W>l
 nnoremap <C-c> :2winc +<CR>
 nnoremap <C-a> :2winc -<CR>
 
+" Sane splitting
 set splitright
 set splitbelow
 
-" for searching in visual blocks use Alt-/
+" for searching in visual blocks use 's'
 vnoremap s <Esc>/\%V
 
 " encoding...
 set encoding=utf-8
 set termencoding=utf-8
+
+" Suppress warnings from :make command in copen
+set errorformat^=%-G%f:%l:\ warning:%m
 
 " mappings and abbreviations
 let mapleader = ","
@@ -238,12 +233,8 @@ let NERDTreeChDirMode=2     " use the top dir in NERDTree as the working dir
 let NERDTreeShowHidden=0    " don't show hidden files ('I' toggles this)
 " DelimitMate
 let delimitMate_expand_cr=1
+
 " Syntastic
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
@@ -257,6 +248,7 @@ let g:syntastic_javascript_checkers=['javascript']
 let g:syntastic_python_checkers=['pylint'] 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 
+" Massive mapping to allow ']l' and '[l' to move between Syntastic errors
 nnoremap ]l :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<CR>
 
 
@@ -264,8 +256,8 @@ nnoremap ]l :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-autocmd Filetype gitcommit setlocal spell textwidth=72
 " set spelling and text-width for git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim           
@@ -447,4 +439,9 @@ if has("cscope")
     " timeoutlent (default: 1000 = 1 second, which is sluggish) is used.
     "
     "set ttimeoutlen=100
+endif
+
+" Arista specific settings
+if filereadable(glob("~/.vimrc.arista")) 
+   source ~/.vimrc.arista
 endif
