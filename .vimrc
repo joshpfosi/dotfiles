@@ -32,6 +32,8 @@ Plugin 'xolox/vim-misc'
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_max_files=0
 let g:ctrlp_open_new_file='v' " open new window in vertical split
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 " Dispatch background tasks neatly
 Plugin 'tpope/vim-dispatch'
@@ -69,10 +71,7 @@ Bundle "garbas/vim-snipmate"
 " Optional:
 Bundle "honza/vim-snippets"
 
-Plugin 'ervandew/supertab'
-" TAB = AUTOCOMPLETE. YAY.
-" the SuperTabMappingForward, SuperTabMappingBackward, and
-" SuperTabMappingLiteral settings let you change the mappings
+Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'tpope/vim-fugitive'
 " Git in Vim!
@@ -112,7 +111,7 @@ set ignorecase      " default to case-insensitive
 set smartcase       " case sensitive when search includes caps
 set matchtime=5     
 
-set textwidth=85
+set textwidth=80
 
 " deletes parameters in next and previous parenthesis respectively
 onoremap in( :<C-U>normal! f(vi(<CR>
@@ -445,3 +444,5 @@ endif
 if filereadable(glob("~/.vimrc.arista")) 
    source ~/.vimrc.arista
 endif
+
+vnoremap <Leader>y :call system('nc localhost 8377', @0)<CR>
