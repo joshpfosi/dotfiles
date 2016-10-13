@@ -11,6 +11,7 @@ cd && rm -rf ~/.vim && \
 git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
 ln -sf ~/.vim/.vimrc .vimrc && \
 ln -sf ~/.vim/.rvmrc .rvmrc && \
+ln -sf ~/.vim/config .ssh/config && \
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
 git config --global user.email "joshpfosi@gmail.com" && \
 git config --global user.name "joshpfosi"
@@ -27,6 +28,8 @@ files if they exist.
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #### Macvim (brew install macvim)
     brew install macvim
+#### Clipper
+    brew install clipper
 
 #### Disabling HTC One M8 automount
 
