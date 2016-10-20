@@ -11,6 +11,8 @@ cd && rm -rf ~/.vim && \
 git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
 ln -sf ~/.vim/.vimrc .vimrc && \
 ln -sf ~/.vim/.rvmrc .rvmrc && \
+ln -sf ~/.vim/.bashrc .bashrc && \
+ln -sf ~/.vim/.bashrc.arista .bashrc.arista && \
 ln -sf ~/.vim/.tmux.conf .tmux.conf && \
 ln -sf ~/.vim/config .ssh/config && \
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
