@@ -12,6 +12,7 @@ Finally got around to writing a helpful readme for little gotchyas in web progra
 * Remove files after adding to `.gitignore`: `git rm -r --cached some-directory`
 * Diffing two branches: `git diff branch_1..branch_2`
 * Undoing a commit: `git reset --soft HEAD~1`
+* Unstaging a file: `git reset <filename>`
 
 ## Renaming branches
 

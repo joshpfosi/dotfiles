@@ -30,6 +30,33 @@ files if they exist.
     brew install macvim
 #### Clipper
     brew install clipper
+#### tmux
+    brew install tmux
+
+#### Setting Up Clipper
+
+Set up `ssh` to automatically configure the shared connection back to the local
+host. Add the following to `~/.ssh/config`:
+
+```shell
+Host *
+  ControlPersist 240
+  ControlMaster auto
+  ControlPath ~/.ssh/%r@%h:%p
+  RemoteForward 8377 localhost:8377
+```
+
+This causes every SSH connection to report back any data written to
+`localhost:8377` on the remote host to `localhost:8377` on the local host, i.e.
+Clipper. Clipper then writes it to the system clipboard. Aliases should be set
+up on the remote host to make this process more seamless, e.g.:
+
+```shell
+alias clip="nc localhost 8377"
+```
+
+On Mac OS, `clipper` can run as a launch agent on startup. To configure this,
+simply copy `com.joshpfosi.clipper.plist` to `/Users/<user>/Library/LaunchAgents`.
 
 #### Disabling HTC One M8 automount
 
