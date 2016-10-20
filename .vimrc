@@ -9,6 +9,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/vundle'
 
+" tmux / vim integration
+Plugin 'christoomey/vim-tmux-navigator'
+
 Plugin 'editorconfig/editorconfig-vim'
 " adds support for .editorconfig files
 
@@ -191,11 +194,12 @@ set laststatus=2                " command-line statuses in ALL the windows
 set switchbuf=useopen           " jump to the requested buffer if it's open
 set eol                         " automatically add an EOL in non-binary files
 
+" Unmap <C-j> in vim-latex so it can be used by vim-tmux-navigator to switch panes
+imap <C-space> <Plug>IMAP_JumpForward
+nmap <C-space> <Plug>IMAP_JumpForward
+vmap <C-space> <Plug>IMAP_JumpForward
+
 " Allow for easy window switching
-nnoremap <S-J> <C-W>j
-nnoremap <S-K> <C-W>k
-nnoremap <S-H> <C-W>h
-nnoremap <S-L> <C-W>l
 nnoremap <C-c> :2winc +<CR>
 nnoremap <C-a> :2winc -<CR>
 
@@ -440,9 +444,10 @@ if has("cscope")
     "set ttimeoutlen=100
 endif
 
+" Clipper specific setting
+nnoremap <C-y> :call writefile(split(@0,"\n",1),expand('~/.clip.pipe'))<CR>
+
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 
    source ~/.vimrc.arista
 endif
-
-vnoremap <Leader>y :call system('nc localhost 8377', @0)<CR>
