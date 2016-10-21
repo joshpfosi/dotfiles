@@ -1,5 +1,11 @@
 # TCP forwarding:
-Host *
-  ControlMaster auto
-  ControlPath ~/.ssh/%r@%h:%p
-  ControlPersist 240
+# Host *
+#   ControlMaster auto
+#   ControlPath ~/.ssh/%r@%h:%p
+#   ControlPersist 240
+#   RemoteForward 8377 localhost:8377
+
+Host us
+  HostName us102
+  User joshpfosi
+  RemoteForward 8377 localhost:8377
