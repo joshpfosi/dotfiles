@@ -136,19 +136,10 @@ set expandtab
 set shiftround
 set preserveindent
 
-au FileType,BufNewFile,BufRead javascript,*.m setlocal tabstop=2
-au FileType,BufNewFile,BufRead javascript,*.m setlocal softtabstop=2
-au FileType,BufNewFile,BufRead javascript,*.m setlocal shiftwidth=2
 
-au FileType,BufNewFile,BufRead md setlocal textwidth=1000
-
-" limits width for c and c++ files
-au FileType py,h,c,cpp highlight Overlength ctermbg=red ctermfg=white guibg=#592929
-au Filetype py,h,c,cpp,js match Overlength /\%80v.\+/
+highlight Overlength ctermbg=red ctermfg=white guibg=#592929
+match Overlength /\%80v.\+/
 set colorcolumn=81
-
-" For 40-HW9 (syntax colours, etc.)
-au BufNewFile,BufRead *.ums,*.um set filetype=ums
 
 au BufRead,BufNewFile *.tex set filetype=tex
 au BufNewFile,BufRead *.hbs set filetype=html
@@ -446,6 +437,9 @@ endif
 
 " Clipper specific setting
 nnoremap <C-y> :call writefile(split(@0,"\n",1),expand('~/.clip.pipe'))<CR>
+
+" Disable that annoying "help" binding
+map <S-k> <Nop>
 
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 
