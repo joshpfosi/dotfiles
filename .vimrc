@@ -314,6 +314,7 @@ if has("cscope")
        endif
     endfunction
 
+    cs reset
     au BufEnter /* call LoadCscope("c_cscope.out")
     au BufEnter /* call LoadCscope("py_cscope.out")
 
