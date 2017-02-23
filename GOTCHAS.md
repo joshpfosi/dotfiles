@@ -13,6 +13,12 @@ Finally got around to writing a helpful readme for little gotchyas in web progra
 * Diffing two branches: `git diff branch_1..branch_2`
 * Undoing a commit: `git reset --soft HEAD~1`
 * Unstaging a file: `git reset <filename>`
+* Finding a bad commit:
+
+```
+git bisect start <good-sha> <bad-sha>
+git bisect run <cmd> <args>
+```
 
 ## Renaming branches
 
@@ -202,6 +208,8 @@ make
 * Start a new tmux session in "control" mode which allows scrolling: `tmux -CC`
 * Detach by pressing Esc
 * Reattach to a running session `tmux -CC a`
+* Attach to session w/ different winow: `tmux new-session -t <id>`
+* Cycle through layouts: `prefix + Space`
 
 # Python
 
@@ -217,3 +225,15 @@ make
 # Netstat
 
 * Determine which program is using which port `sudo netstat -tulpn`
+
+# Finding a list of files in vim
+
+```
+:% ! while read f; do find /src/Bgp -name $f; done
+```
+
+# Locate
+
+* Using Unix tool `locate` to find files
+* `locate -ir "my_file.*log"` - using regex
+* Populating indices: `sudo /etc/cron.daily/mlocate.cron`
