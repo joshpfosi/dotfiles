@@ -24,6 +24,9 @@ Plugin 'Raimondi/delimitMate'
 " Latex plugin
 Plugin 'jcf/vim-latex'
 
+" Ale - async linting
+" Plugin 'w0rp/ale'
+
 " Emmet
 Plugin 'mattn/emmet-vim'
 
@@ -441,6 +444,44 @@ nnoremap <C-y> :call writefile(split(@0,"\n",1),expand('~/.clip.pipe'))<CR>
 
 " Disable that annoying "help" binding
 map <S-k> <Nop>
+
+" tmux style zoom feature
+nnoremap <Leader>z :tabnew %<CR>
+
+" remove trailing whitespace
+
+fun! TrimWhitespace()
+   let l:save = winsaveview()
+   %s/\s\+$//e
+   w
+   call winrestview(l:save)
+endfun
+nnoremap <Leader>w :call TrimWhitespace()<CR>
+
+" " Terminal settings
+" tnoremap <Leader><ESC> <C-\><C-n>
+" 
+" " Window navigation function
+" " Make ctrl-h/j/k/l move between windows and auto-insert in terminals
+" func! s:mapMoveToWindowInDirection(direction)
+"    func! s:maybeInsertMode(direction)
+"       stopinsert
+"       execute "wincmd" a:direction
+" 
+"       if &buftype == 'terminal'
+"          startinsert!
+"       endif
+"    endfunc
+" 
+"    execute "tnoremap" "<silent>" "<C-" . a:direction . ">"
+"             \ "<C-\\><C-n>"
+"             \ ":call <SID>maybeInsertMode(\"" . a:direction . "\")<CR>"
+"    execute "nnoremap" "<silent>" "<C-" . a:direction . ">"
+"             \ ":call <SID>maybeInsertMode(\"" . a:direction . "\")<CR>"
+" endfunc
+" for dir in ["h", "j", "l", "k"]
+"    call s:mapMoveToWindowInDirection(dir)
+" endfor
 
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 
