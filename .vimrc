@@ -77,8 +77,6 @@ Bundle "garbas/vim-snipmate"
 " Optional:
 Bundle "honza/vim-snippets"
 
-Plugin 'Valloric/YouCompleteMe'
-
 Plugin 'tpope/vim-fugitive'
 " Git in Vim!
 " :Gstatus for Git status
