@@ -12,7 +12,6 @@ git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
 ln -sf ~/.vim/.vimrc .vimrc && \
 ln -sf ~/.vim/.rvmrc .rvmrc && \
 ln -sf ~/.vim/.bashrc .bashrc && \
-ln -sf ~/.vim/.bashrc.arista .bashrc.arista && \
 ln -sf ~/.vim/.tmux.conf .tmux.conf && \
 ln -sf ~/.vim/.bash_profile ~/.bash_profile && \
 ln -f ~/.vim/config .ssh/config && \

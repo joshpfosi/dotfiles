@@ -19,4 +19,7 @@ alias tmuxl="tmux list-sessions"
 
 alias clip="nc -U ~/.clipper.sock"
 
-source ~/.bashrc.arista
+if [ -e ~/.bashrc.arista ]
+then
+   source ~/.bashrc.arista
+fi
