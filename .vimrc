@@ -438,13 +438,16 @@ if has("cscope")
 endif
 
 " Clipper specific setting
-nnoremap <C-y> :call writefile(split(@0,"\n",1),expand('~/.clip.pipe'))<CR>
+nnoremap <C-y> :call system('nc -U ~/.clipper.sock', @0)<CR>
 
 " Disable that annoying "help" binding
 map <S-k> <Nop>
 
 " tmux style zoom feature
 nnoremap <Leader>z :tabnew %<CR>
+
+" Open all buffers in tabs
+nnoremap <Leader>bt :tab sball<CR>
 
 " remove trailing whitespace
 
