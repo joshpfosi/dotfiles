@@ -1,11 +1,15 @@
-# TCP forwarding:
-# Host *
-#   ControlMaster auto
-#   ControlPath ~/.ssh/%r@%h:%p
-#   ControlPersist 240
-#   RemoteForward 8377 localhost:8377
+# Allow sharing of multiple sessions over a single network connection
+# With this configured, clipper, which requires a single connection over which
+# to send back content, will not lose its connection when additional sessions to
+# us102 are opened.
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/%r@%h:%p
+  ControlPersist 240
+  Port 8378
 
-Host us
-  HostName us102
+Host us102
   User joshpfosi
-  RemoteForward 8377 localhost:8377
+  Port 8378
+  # Tell ssh to forward data from .clipper.sock on us102 to this host
+  RemoteForward /home/joshpfosi/.clipper.sock /Users/joshpfosi/.clipper.sock

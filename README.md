@@ -14,7 +14,10 @@ ln -sf ~/.vim/.rvmrc .rvmrc && \
 ln -sf ~/.vim/.bashrc .bashrc && \
 ln -sf ~/.vim/.bashrc.arista .bashrc.arista && \
 ln -sf ~/.vim/.tmux.conf .tmux.conf && \
-ln -sf ~/.vim/config .ssh/config && \
+ln -sf ~/.vim/.bash_profile ~/.bash_profile && \
+ln -f ~/.vim/config .ssh/config && \
+sudo ln -f com.joshpfosi.clipper.plist \
+~/Library/LaunchAgents/com.joshpfosi.clipper.plist && \
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
 git config --global user.email "joshpfosi@gmail.com" && \
 git config --global user.name "joshpfosi"
@@ -38,37 +41,7 @@ files if they exist.
 
 #### Setting Up Clipper
 
-Set up `ssh` to automatically configure the shared connection back to the local
-host. Add the following to `~/.ssh/config`:
-
-```shell
-Host *
-  ControlPersist 240
-  ControlMaster auto
-  ControlPath ~/.ssh/%r@%h:%p
-  RemoteForward 8377 localhost:8377
-```
-
-This causes every SSH connection to report back any data written to
-`localhost:8377` on the remote host to `localhost:8377` on the local host, i.e.
-Clipper. Clipper then writes it to the system clipboard. Aliases should be set
-up on the remote host to make this process more seamless, e.g.:
-
-```shell
-alias clip="nc localhost 8377"
-```
-
-On Mac OS, `clipper` can run as a launch agent on startup. To configure this,
-simply copy `com.joshpfosi.clipper.plist` to `/Users/<user>/Library/LaunchAgents`.
-
-#### Disabling HTC One M8 automount
-
-Whenever I plug in my phone, it automounts the HTC Sync Manager. To disable this follow the instructions found here on [Stack Exchange](http://apple.stackexchange.com/questions/108394/remove-htc-sync-manager-from-autostart), summarized as:
-
-    diskutil info /Volumes/HTC\ Sync\ Manager | grep "UUID"
-    sudo vifs
-
-Append `UUID=<UUID> none hfs rw,noauto` to the file and save
+Refer to `clipper.md` for details.
 
 ## Applications
 * [Chrome](https://support.google.com/chrome/answer/95346?hl=en)
