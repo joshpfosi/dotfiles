@@ -6,7 +6,6 @@ Host *
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
   ControlPersist 240
-  Port 8378
 
 Host us102
   User joshpfosi

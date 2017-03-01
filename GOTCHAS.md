@@ -237,3 +237,7 @@ make
 * Using Unix tool `locate` to find files
 * `locate -ir "my_file.*log"` - using regex
 * Populating indices: `sudo /etc/cron.daily/mlocate.cron`
+
+# Signing in as other users
+
+* `sudo su <username>`
