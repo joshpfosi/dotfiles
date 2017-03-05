@@ -12,8 +12,10 @@ git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
 ln -sf ~/.vim/.vimrc .vimrc && \
 ln -sf ~/.vim/.rvmrc .rvmrc && \
 ln -sf ~/.vim/.bashrc .bashrc && \
+ln -sf ~/.vim/.zshrc .zshrc && \
 ln -sf ~/.vim/.tmux.conf .tmux.conf && \
 ln -sf ~/.vim/.bash_profile ~/.bash_profile && \
+ln -sf ~/.vim/.sharedrc ~/.sharedrc && \
 ln -f ~/.vim/config .ssh/config && \
 sudo ln -f com.joshpfosi.clipper.plist \
 ~/Library/LaunchAgents/com.joshpfosi.clipper.plist && \
@@ -21,9 +23,6 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
 git config --global user.email "joshpfosi@gmail.com" && \
 git config --global user.name "joshpfosi"
 ```
-
-Warning: This will obliterate your `.vim` directory, `.vimrc` and `.rvmrc`
-files if they exist.
 
 ## Software
 
