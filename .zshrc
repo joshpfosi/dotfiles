@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/joshpfosi/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -54,7 +54,14 @@ ZSH_THEME="josh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+if [ -e $ZSH/oh-my-zsh.sh ]
+then
+   source $ZSH/oh-my-zsh.sh
+else
+   echo 'You need to install oh-my-zsh:
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/'\
+'oh-my-zsh/master/tools/install.sh)"'
+fi
 
 # User configuration
 
