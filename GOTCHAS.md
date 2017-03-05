@@ -153,6 +153,7 @@ end
 * Autowrap text to 80 lines: In Visual mode, type `gq`
 * Remove meta characters: `set ff=unix`
 * Remove trailing whitespace: `%s:\s\+$`
+* Open all buffers in new tab: `:tab sball`
 
 # Deploying (Juniper)
 
