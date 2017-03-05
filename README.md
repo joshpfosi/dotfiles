@@ -16,6 +16,7 @@ ln -sf ~/.vim/.zshrc .zshrc && \
 ln -sf ~/.vim/.tmux.conf .tmux.conf && \
 ln -sf ~/.vim/.bash_profile ~/.bash_profile && \
 ln -sf ~/.vim/.sharedrc ~/.sharedrc && \
+ln -sf ~/.vim/josh.zsh-theme ~/.oh-my-zsh/themes/ && \
 ln -f ~/.vim/config .ssh/config && \
 sudo ln -f com.joshpfosi.clipper.plist \
 ~/Library/LaunchAgents/com.joshpfosi.clipper.plist && \
@@ -36,6 +37,12 @@ git config --global user.name "joshpfosi"
     brew install clipper
 #### tmux
     brew install tmux
+#### zsh
+    brew install zsh zsh-completions
+or
+    sudo yum -y install zsh
+#### oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 #### Setting Up Clipper
 
