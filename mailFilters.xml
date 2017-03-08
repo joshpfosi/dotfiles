@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='UTF-8'?><feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'>
+	<title>Mail Filters</title>
+	<id>tag:mail.google.com,2008:filters:1466599874716,1466988645450,1467730670348,1468414941668,1473465471515,1473508195581,1477316405081,1477429824141,1477487888594,1477487927576,1477487969898,1477487978344,1477488421817,1477488674768,1477496437123,1477523570923,1477941072679,1478043269546,1478100509473,1478120009364,1478558320780,1481148961077,1481148972132,1481148981040,1488311103351,1488311191815,1488311294358,1488316933561,1488316985212,1488811728444</id>
+	<updated>2017-03-08T15:40:57Z</updated>
+	<author>
+		<name>josh pfosi</name>
+		<email>joshpfosi@arista.com</email>
+	</author>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1466599874716</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='a4submit@arista.com'/>
+		<apps:property name='subject' value='joshpfosi'/>
+		<apps:property name='label' value='A4'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477488674768</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='subject' value='Review Request'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1466988645450</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='abuild-admin@arista.com'/>
+		<apps:property name='label' value='A4'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1468414941668</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='servicenotice@wageworks.com'/>
+		<apps:property name='label' value='WageWorks'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1473465471515</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='to' value='hq-beerbash@arista.com'/>
+		<apps:property name='shouldTrash' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1473508195581</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='to' value='sw-newbies@arista.com'/>
+		<apps:property name='label' value='sw-newbies'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477316405081</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='autotest@arista.com'/>
+		<apps:property name='label' value='AutoTest'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477429824141</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:(&lt;gerrit-gitar.gerrit&gt;)'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477487888594</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:&quot;arostest-dev@arista.com&quot;'/>
+		<apps:property name='label' value='arostest-dev'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477487927576</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:(&lt;sw-announce.arista.com&gt;)'/>
+		<apps:property name='label' value='sw-announce'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477487969898</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='to' value='nashua-attend@arista.com'/>
+		<apps:property name='label' value='nashua-attend'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477487978344</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:&quot;&lt;gitar-dev.arista.com&gt;&quot;'/>
+		<apps:property name='label' value='gitar-dev'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477488421817</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='Art Remind'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477496437123</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:&quot;rfe@arista.com&quot;'/>
+		<apps:property name='label' value='rfe'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477523570923</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='coverage-dev@arista.com'/>
+		<apps:property name='label' value='coverage-dev'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1477941072679</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='proglog@arista.com'/>
+		<apps:property name='label' value='Proglog'/>
+		<apps:property name='shouldMarkAsRead' value='true'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1478043269546</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='subject' value='[sw-meeting-notes]'/>
+		<apps:property name='label' value='sw-meeting-notes'/>
+		<apps:property name='shouldMarkAsRead' value='true'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1478100509473</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='joshpfosi@arista.com'/>
+		<apps:property name='subject' value='Cron &lt;joshpfosi@us102&gt; $HOME/bin/dut_check cd296'/>
+		<apps:property name='label' value='dut-caretaking'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1478120009364</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='a4submit@arista.com'/>
+		<apps:property name='subject' value='[a4submit]'/>
+		<apps:property name='shouldMarkAsRead' value='true'/>
+		<apps:property name='shouldTrash' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1478558320780</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='icinga@arista.com'/>
+		<apps:property name='label' value='dut-caretaking'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1481148961077</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:&quot;bgp-dev@arista.com&quot; [Bug'/>
+		<apps:property name='label' value='bugs'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1481148972132</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:&quot;bgp-dev@arista.com&quot; Review Request'/>
+		<apps:property name='label' value='review-requests'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1481148981040</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:&quot;bgp-dev@arista.com&quot; ESCALATION'/>
+		<apps:property name='label' value='escalations'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1488311103351</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='QuickTest@arista.com'/>
+		<apps:property name='label' value='quicktest'/>
+		<apps:property name='shouldMarkAsRead' value='true'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1488311191815</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='subject' value='SR'/>
+		<apps:property name='hasTheWord' value='list:(&lt;support-watchers.arista.com&gt;)'/>
+		<apps:property name='shouldTrash' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1488311294358</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:&quot;support-watchers@arista.com&quot;'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1488316933561</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:(&lt;hq.arista.com&gt;)'/>
+		<apps:property name='shouldTrash' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1488316985212</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='from' value='John Flatley Company'/>
+		<apps:property name='hasTheWord' value='list:(&lt;nashua-route-sw.arista.com&gt;)'/>
+		<apps:property name='shouldTrash' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1488811728444</id>
+		<updated>2017-03-08T15:40:57Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='list:(&lt;nashua-newbies_ext.arista.com&gt;)'/>
+		<apps:property name='label' value='nashua-newbies'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+</feed>
