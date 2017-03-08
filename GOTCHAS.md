@@ -20,6 +20,8 @@ git bisect start <good-sha> <bad-sha>
 git bisect run <cmd> <args>
 ```
 
+* Accidentally removed `.git/index`: `git read-tree --reset HEAD`
+
 ## Renaming branches
 
   git branch -m old_branch new_branch         # Rename branch locally    
