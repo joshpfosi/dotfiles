@@ -14,6 +14,8 @@ alias tmuxl="tmux list-sessions"
 
 alias clip="nc -U ~/.clipper.sock"
 
+alias sshtunnel='ssh us102 "rm .clipper.sock"'
+
 function addmusic {
     # Get the best audio, convert it to MP3, and save it to the current
     # directory.
