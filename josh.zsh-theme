@@ -1,12 +1,21 @@
 if [[ -n "$A4_CHROOT" && -z "$ARTEST_RANDSEED" && $- =~ "i"  ]]
 then
-   local chrootvar="%% "
+   local chrootvar=" %% "
 else
    local chrootvar=''
 fi
 
+if [[ -n "$NSNAME" ]]
+then
+   local nsl=' ('
+   local nsr=')'
+else
+   local nsl=''
+   local nsl=''
+fi
+
 # local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-PROMPT='$(git_prompt_info)%{$fg[cyan]%}%c%{$reset_color%} ${chrootvar}'
+PROMPT='$(git_prompt_info)%{$fg[cyan]%}%c%{$reset_color%}${nsl}$NSNAME${nsr}${chrootvar}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
