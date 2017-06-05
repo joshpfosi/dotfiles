@@ -9,6 +9,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/vundle'
 
+" cppcheck / vim integration
+Plugin 'vim-scripts/cpp_cppcheck.vim'
+
 " tmux / vim integration
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -23,6 +26,15 @@ Plugin 'Raimondi/delimitMate'
 
 " Latex plugin
 Plugin 'jcf/vim-latex'
+
+" Bindings to open quickfix items in splits
+Plugin 'yssl/QFEnter'
+
+" Bindings based on CtrlP
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_keymap.topen = ['<C-t>']
 
 " Ale - async linting
 " Plugin 'w0rp/ale'
@@ -146,6 +158,8 @@ au BufRead,BufNewFile *.tex set filetype=tex
 au BufNewFile,BufRead *.hbs set filetype=html
 au BufNewFile,BufRead *.handlebars set filetype=html
 au BufNewFile,BufRead *.erb set filetype=html
+au BufNewFile,BufRead *.zsh-theme set filetype=zsh
+au BufNewFile,BufRead *.log set filetype=text
 
 " woohoo SYNTAX COLOURS
 syntax on
@@ -459,30 +473,9 @@ fun! TrimWhitespace()
 endfun
 nnoremap <Leader>w :call TrimWhitespace()<CR>
 
-" " Terminal settings
-" tnoremap <Leader><ESC> <C-\><C-n>
-" 
-" " Window navigation function
-" " Make ctrl-h/j/k/l move between windows and auto-insert in terminals
-" func! s:mapMoveToWindowInDirection(direction)
-"    func! s:maybeInsertMode(direction)
-"       stopinsert
-"       execute "wincmd" a:direction
-" 
-"       if &buftype == 'terminal'
-"          startinsert!
-"       endif
-"    endfunc
-" 
-"    execute "tnoremap" "<silent>" "<C-" . a:direction . ">"
-"             \ "<C-\\><C-n>"
-"             \ ":call <SID>maybeInsertMode(\"" . a:direction . "\")<CR>"
-"    execute "nnoremap" "<silent>" "<C-" . a:direction . ">"
-"             \ ":call <SID>maybeInsertMode(\"" . a:direction . "\")<CR>"
-" endfunc
-" for dir in ["h", "j", "l", "k"]
-"    call s:mapMoveToWindowInDirection(dir)
-" endfor
+" Binding cnext / cprev
+nnoremap <Leader>n :cnext<CR>
+nnoremap <Leader>p :cprevious<CR>
 
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 

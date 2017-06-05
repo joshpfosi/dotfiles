@@ -1,6 +1,8 @@
 #!/bin/sh
 # This config file is for aliases and other config shared across zsh and bash
 
+export TERM=xterm-256color # Force proper coloring in tmux sessions
+
 alias vi="vim"
 set -o vi
 

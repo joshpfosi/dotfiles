@@ -106,3 +106,7 @@ bindkey "^p" ctrlp
 
 # disable history sharing across tmux panes
 setopt nosharehistory
+
+# Vi mode
+bindkey -v
+export KEYTIMEOUT=1
