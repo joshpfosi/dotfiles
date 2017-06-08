@@ -75,13 +75,6 @@ Plugin 'sophacles/vim-processing'
 
 Plugin 'scrooloose/syntastic'
 
-Plugin 'scrooloose/nerdcommenter'
-" <map>cs for multi-line comments
-" <map>ci to toggle regular comments
-" <map>cc to add regular comments (will nest)
-" add a number or highlight text to comment the next x lines or portion,
-" e.g., 5,cs to comment the next 5 lines
-
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
@@ -228,17 +221,12 @@ set errorformat^=%-G%f:%l:\ warning:%m
 " mappings and abbreviations
 let mapleader = ","
 inoremap jj <Esc>           " jj exits insert mode if typed quickly
-map <Ctrl>w<down> <Ctrl>wj  " more window nav shortcuts
-map <Ctrl>w<up> <Ctrl>wk
-inoremap ,, <Tab>           " ,, works as a tab in insert mode if typed quickly
 
 " more bits and pieces
 set tags=tags;/
 set nomodeline
 
 " Bundle settings
-" NERDCommenter
-let NERDSpaceDelims=1       " spaces! in comments! YAY!
 " NERDTree
 let NERDTreeChDirMode=2     " use the top dir in NERDTree as the working dir
 let NERDTreeShowHidden=0    " don't show hidden files ('I' toggles this)
