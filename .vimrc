@@ -465,6 +465,9 @@ nnoremap <Leader>w :call TrimWhitespace()<CR>
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>p :cprevious<CR>
 
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprev<CR>
+
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 
    source ~/.vimrc.arista
