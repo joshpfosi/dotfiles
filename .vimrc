@@ -12,6 +12,13 @@ Plugin 'gmarik/vundle'
 " cppcheck / vim integration
 Plugin 'vim-scripts/cpp_cppcheck.vim'
 
+Plugin 'yssl/QFEnter'
+
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_keymap.topen = ['<C-t>']
+
 " tmux / vim integration
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -26,9 +33,6 @@ Plugin 'Raimondi/delimitMate'
 
 " Latex plugin
 Plugin 'jcf/vim-latex'
-
-" Bindings to open quickfix items in splits
-Plugin 'yssl/QFEnter'
 
 " Bindings based on CtrlP
 let g:qfenter_keymap = {}
@@ -172,9 +176,11 @@ set t_vb=
 set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
 set ch=2
-set history=100                 " remember stuff
-set undolevels=100              " remember more stuff
-" set number                      " LINE NUMBERS
+set history=1000                 " remember stuff
+set undolevels=1000              " remember more stuff
+set number
+set relativenumber                      " LINE NUMBERS
+highlight clear LineNr
 set ruler                       " show the current location in the command-line
 set scrolloff=5                 " keep some context visible
 set showmode
@@ -294,6 +300,8 @@ if has("cscope")
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
     set csto=0
+	 " set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
+	 set cscopequickfix=s-
 
     " By default, Cscope script adds cscope.out from Vim's current directory and from
     " $CSCOPE_DB. However, if you start Vim from say ~/proj/src/a/b/c/, while
@@ -318,13 +326,11 @@ if has("cscope")
     endfunction
 
     cs reset
-    au BufEnter /* call LoadCscope("c_cscope.out")
-    au BufEnter /* call LoadCscope("py_cscope.out")
+    au BufEnter /* call LoadCscope("cscope.out")
+    au BufEnter /* call LoadCscope("pycscope.out")
 
     " show msg when any other cscope db added
     set cscopeverbose  
-    " set csqf=s- " open "s" results in quickfix window (:copen) rather than
-                " command line
 
 
     """"""""""""" My cscope/vim key mappings
@@ -467,6 +473,9 @@ nnoremap <Leader>p :cprevious<CR>
 
 nnoremap <Leader>cn :cnext<CR>
 nnoremap <Leader>cp :cprev<CR>
+
+nnoremap <Leader>v :vsplit<CR>
+nnoremap <Leader>h :split<CR>
 
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 
