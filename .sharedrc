@@ -1,3 +1,4 @@
+#!/bin/sh
 # This config file is for aliases and other config shared across zsh and bash
 
 alias vi="vim"
@@ -15,24 +16,28 @@ alias tmuxl="tmux list-sessions"
 alias clip="nc -U ~/.clipper.sock"
 
 function us102() {
-   ssh -q joshpfosi@us102 "rm .clipper.sock";
-   rm .ssh/joshpfosi@us102:8378;
-   ssh -q us102
+   # ssh us102
+   # ssh joshpfosi-home.sjc.aristanetworks.com
+
+   # ssh -q joshpfosi@us102 "rm .clipper.sock";
+   # rm -f .ssh/joshpfosi@us102:8378;
+   # ssh -q us102
+
+   mosh joshpfosi@us102
 }
 
-function addmusic {
-    # Get the best audio, convert it to MP3, and save it to the current
-    # directory.
-    youtube-dl --default-search=ytsearch: \
-               --restrict-filenames \
-               --format=bestaudio \
-               --extract-audio \
-               --audio-format=mp3 \
-               --audio-quality=1 "$*"
-    mv *.mp3 ~/Google\ Drive/Pfosi\'s\ Music\ Folder/
+function us106() {
+   # ssh us106
+   # ssh joshpfosi-home.sjc.aristanetworks.com
+
+   # ssh -q joshpfosi@us106 "rm .clipper.sock";
+   # rm -f .ssh/joshpfosi@us106:8378;
+   # ssh -q us106
+
+   mosh joshpfosi@us106
 }
 
-alias addmusic="addmusic"
+export PATH=~/.vim:$PATH
 
 if [ -e ~/.bashrc.arista ]
 then

@@ -16,7 +16,7 @@ Finally got around to writing a helpful readme for little gotchyas in web progra
 * Finding a bad commit:
 
 ```
-git bisect start <good-sha> <bad-sha>
+git bisect start <bad-sha> <good-sha>
 git bisect run <cmd> <args>
 ```
 
@@ -156,6 +156,7 @@ end
 * Remove meta characters: `set ff=unix`
 * Remove trailing whitespace: `%s:\s\+$`
 * Open all buffers in new tab: `:tab sball`
+* Debug mapping issues: https://vi.stackexchange.com/questions/7722/how-to-debug-a-mapping
 
 # Deploying (Juniper)
 
@@ -244,3 +245,10 @@ make
 # Signing in as other users
 
 * `sudo su <username>`
+
+# Git hooks
+
+* `git config --global init.templatedir '~/.git-templates'`
+* `mkdir -p ~/.git-templates/hooks`
+* `vi ~/.git-templates/hooks/post-commit`
+* `chmod a+x ~/.git-templates/hooks/post-commit`

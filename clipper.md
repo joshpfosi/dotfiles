@@ -43,7 +43,7 @@ make install
 * Start the local `ssh` server by running:
 
 ```
-/home/joshpfosi/local/sbin/sshd -p 8378
+/home/joshpfosi/bin/sbin/sshd -p 8378
 ```
 
 * NOTE: port 8378 is arbitrary
