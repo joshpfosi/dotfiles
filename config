@@ -7,8 +7,28 @@ Host *
   ControlPath ~/.ssh/%r@%h:%p
   ControlPersist 240
 
-Host us102
-  User joshpfosi
-  Port 8378
-  # Tell ssh to forward data from .clipper.sock on us102 to this host
-  RemoteForward /home/joshpfosi/.clipper.sock /Users/joshpfosi/.clipper.sock
+# Host us102
+#   User joshpfosi
+#   Port 8378
+#   # Tell ssh to forward data from .clipper.sock on us102 to this host
+#   RemoteForward /home/joshpfosi/.clipper.sock /Users/joshpfosi/.clipper.sock
+
+# On Sierra, sshkeys are not part of the keychain by default anymore
+Host *
+   UseKeychain yes
+
+Host clippertunnel
+    ServerAliveInterval 3
+    ServerAliveCountMax 1
+    HostName us102
+    User joshpfosi
+    Port 8378
+        RemoteForward /home/joshpfosi/.clipper.sock /Users/joshpfosi/.clipper.sock
+
+Host clippertunnel
+    ServerAliveInterval 3
+    ServerAliveCountMax 1
+    HostName us106
+    User joshpfosi
+    Port 8378
+        RemoteForward /home/joshpfosi/.clipper.sock /Users/joshpfosi/.clipper.sock
