@@ -13,6 +13,10 @@ fi
 #
 # @return 1 => neither, 2 => home container, 3 => a4c container
 function get_env_type() {
+   if ! [ -x "$(command -v pstree)" ]; then
+      return 1
+   fi
+
    pstreeparent="$(pstree -s $$)"
 
    if [[ -n "$WP" ]]; then
