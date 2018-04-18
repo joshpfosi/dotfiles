@@ -17,6 +17,7 @@ ln -sf ~/.vim/.zshrc .zshrc && \
 ln -sf ~/.vim/.tmux.conf .tmux.conf && \
 ln -sf ~/.vim/.bash_profile ~/.bash_profile && \
 ln -sf ~/.vim/.sharedrc ~/.sharedrc && \
+ln -sf ~/.vim/.zshrc ~/.zshrc && \
 ln -f ~/.vim/config .ssh/config && \
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && \

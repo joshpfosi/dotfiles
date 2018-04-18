@@ -1,0 +1,67 @@
+# Arista specific settings
+
+if [[ -x /usr/bin/amergeVim ]]; then
+   export P4MERGE=amergeVim
+fi
+
+function a4make() {
+   if [[ $# == 1 ]]; then
+      a4 make -p $1
+   else
+      for pkg in "$@"
+      do
+         (
+         echo "Running 'a4 make -p $pkg &> /tmp/$pkg.out' in the background..."
+         a4 make -p $pkg &> /tmp/$pkg.out
+         echo "a4 make -p $pkg returns $?..."
+         ) &
+      done
+      wait
+      return 0
+   fi
+}
+
+function a4check() {
+   for pkg in "$@"
+   do
+      (
+      echo "Running 'a4 make -p $pkg check &> /tmp/$pkg-check.out' in the background..."
+      a4 make -p $pkg check &> /tmp/$pkg-check.out
+      echo "a4 make -p $pkg check returns $?..."
+      ) &
+   done
+   wait
+   return 0
+}
+
+function a4pylint() {
+   for pkg in "$@"
+   do
+      (
+      echo "Running 'a4 make -p $pkg pylint &> /tmp/$pkg-pylint.out' in the background..."
+      a4 make -p $pkg pylint &> /tmp/$pkg-pylint.out
+      echo "a4 make -p $pkg pylint returns $?..."
+      ) &
+   done
+   wait
+   return 0
+}
+
+shell() {
+   a4c shell -t "$1" "tmux -u attach || tmux -u"
+}
+
+findus() {
+    arventory list | grep ^us | xargs -n1 -P$(nproc) -I% sh -c \
+       'arventory email % | awk "/'"\<$1\>"'/ { print \"%\"; }"'
+}
+
+alias a4diff="a4 diff | vi -R -"
+alias ribcore="sudo gdb /usr/bin/Rib -c /var/core/*Rib*"
+alias atest='AutoTest --notify=$USER --skipTestbedCheck -a --logDir=/tmp --testListFile=/tmp/test-list --algorithm=fixed -d '
+alias runstests="runstests --isolate -j 8"
+
+# Use locally install Vim 8 when chroot'd
+ARCH=`uname -m`
+export PATH="$HOME/$ARCH/bin:$PATH"
+export PATH="$HOME/tools/bin:$PATH"
