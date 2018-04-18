@@ -14,20 +14,15 @@ fi
 # @return 1 => neither, 2 => home container, 3 => a4c container
 function get_env_type() {
    pstreeparent="$(pstree -s $$)"
-   ps1="$(ps -p 1 -o comm=)"
 
-   if [[ "$ps1" =~ "dumb-init" ]]; then
+   if [[ -n "$WP" ]]; then
       return 3
-   elif [[ "$pstreeparent" =~ "docker" ]]; then
+   elif [[ "$pstreeparent" =~ "dumb-init" ]]; then
       # We can see the docker processes, so assume we in the home container
       return 2
-   elif [[ "$pstreeparent" =~ "systemd" || "$pstreeparent" =~ "netns" ]]; then
-      # We are not under docker, but can see systemd, so we probably are not in a
-      # container, so just pass
-      return 1
    else
-      echo "Unexpected environment, returning 0 from get_env_type"
-      return 0
+      # Assume we are not in any container
+      return 1
    fi
 }
 

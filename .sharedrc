@@ -3,7 +3,10 @@
 
 export TERM=xterm-256color # Force proper coloring in tmux sessions
 
+export PYTHONPATH=$PYTHONPATH:~/.vim/pylibs
+
 alias vi="vim"
+# set -o emacs
 set -o vi
 
 # User specific aliases and functions
@@ -14,7 +17,7 @@ export VISUAL=vim
 alias tmuxt="tmux a -t"
 alias tmuxs="tmux new-session -s"
 alias tmuxl="tmux list-sessions"
-
+alias g=grep
 alias clip="nc -U ~/.clipper.sock"
 
 function us102() {

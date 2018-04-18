@@ -109,4 +109,5 @@ setopt nosharehistory
 
 # Vi mode
 bindkey -v
+# bindkey -e
 export KEYTIMEOUT=1

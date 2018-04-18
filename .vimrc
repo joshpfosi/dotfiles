@@ -32,7 +32,7 @@ Plugin 'Raimondi/delimitMate'
 " auto-close brackets, quotes, etc.
 
 " Latex plugin
-Plugin 'jcf/vim-latex'
+" Plugin 'jcf/vim-latex'
 
 " Bindings based on CtrlP
 let g:qfenter_keymap = {}
@@ -40,8 +40,10 @@ let g:qfenter_keymap.vopen = ['<C-v>']
 let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
 let g:qfenter_keymap.topen = ['<C-t>']
 
+" This is currently broken
 " Ale - async linting
 " Plugin 'w0rp/ale'
+" let g:ale_lint_on_text_changed = 'never'
 
 " Emmet
 Plugin 'mattn/emmet-vim'
@@ -76,8 +78,6 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Processing plugin
 Plugin 'sophacles/vim-processing'
-
-Plugin 'scrooloose/syntastic'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -119,7 +119,7 @@ au FileType * setlocal fo-=cro
 
 " search options
 set incsearch       " start searching immediately
-set nohlsearch      " don't highlight searches (ew)
+" set nohlsearch      " don't highlight searches (ew)
 set ignorecase      " default to case-insensitive
 set smartcase       " case sensitive when search includes caps
 set matchtime=5     
@@ -238,21 +238,21 @@ let NERDTreeShowHidden=0    " don't show hidden files ('I' toggles this)
 let delimitMate_expand_cr=1
 
 " Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-" Syntax checkers
-let syntastic_cpp_checkers=['gcc'] 
-let syntastic_scss_checkers=['scss'] 
-let syntastic_haml_checkers=['haml'] 
-let g:syntastic_javascript_checkers=['javascript'] 
-let g:syntastic_python_checkers=['pylint'] 
-let g:syntastic_ruby_checkers=['rubocop', 'mri']
-
-" Massive mapping to allow ']l' and '[l' to move between Syntastic errors
-nnoremap ]l :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<CR>
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" 
+" " Syntax checkers
+" let syntastic_cpp_checkers=['gcc'] 
+" let syntastic_scss_checkers=['scss'] 
+" let syntastic_haml_checkers=['haml'] 
+" let g:syntastic_javascript_checkers=['javascript'] 
+" let g:syntastic_python_checkers=['pylint'] 
+" let g:syntastic_ruby_checkers=['rubocop', 'mri']
+" 
+" " Massive mapping to allow ']l' and '[l' to move between Syntastic errors
+" nnoremap ]l :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<CR>
 
 
 " quickly open and souce vimrc
@@ -266,28 +266,6 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " CSCOPE settings for vim           
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" This file contains some boilerplate settings for vim's cscope interface,
-" plus some keyboard mappings that I've found useful.
-"
-" USAGE: 
-" -- vim 6:     Stick this file in your ~/.vim/plugin directory (or in a
-"               'plugin' directory in some other directory that is in your
-"               'runtimepath'.
-"
-" -- vim 5:     Stick this file somewhere and 'source cscope.vim' it from
-"               your ~/.vimrc file (or cut and paste it into your .vimrc).
-"
-" NOTE: 
-" These key maps use multiple keystrokes (2 or 3 keys).  If you find that vim
-" keeps timing you out before you can complete them, try changing your timeout
-" settings, as explained below.
-"
-" Happy cscoping,
-"
-" Jason Duell       jduell@alumni.princeton.edu     2002/3/7
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim... 
 if has("cscope")
@@ -301,7 +279,7 @@ if has("cscope")
     " if you want the reverse search order.
     set csto=0
 	 " set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
-	 set cscopequickfix=s-
+	 set cscopequickfix=s-,c-,t-
 
     " By default, Cscope script adds cscope.out from Vim's current directory and from
     " $CSCOPE_DB. However, if you start Vim from say ~/proj/src/a/b/c/, while
@@ -327,6 +305,7 @@ if has("cscope")
 
     cs reset
     au BufEnter /* call LoadCscope("cscope.out")
+    au BufEnter /* call LoadCscope("c_cscope.out")
     au BufEnter /* call LoadCscope("pycscope.out")
 
     " show msg when any other cscope db added
@@ -346,32 +325,6 @@ if has("cscope")
     "   'i'   includes: find files that include the filename under cursor
     "   'd'   called: find functions that function under cursor calls
     "
-    " Below are three sets of the maps: one set that just jumps to your
-    " search result, one that splits the existing vim window horizontally and
-    " diplays your search result in the new window, and one that does the same
-    " thing, but does a vertical split instead (vim 6 only).
-    "
-    " I've used CTRL-\ and CTRL-@ as the starting keys for these maps, as it's
-    " unlikely that you need their default mappings (CTRL-\'s default use is
-    " as part of CTRL-\ CTRL-N typemap, which basically just does the same
-    " thing as hitting 'escape': CTRL-@ doesn't seem to have any default use).
-    " If you don't like using 'CTRL-@' or CTRL-\, , you can change some or all
-    " of these maps to use other keys.  One likely candidate is 'CTRL-_'
-    " (which also maps to CTRL-/, which is easier to type).  By default it is
-    " used to switch between Hebrew and English keyboard mode.
-    "
-    " All of the maps involving the <cfile> macro use '^<cfile>$': this is so
-    " that searches over '#include <time.h>" return only references to
-    " 'time.h', and not 'sys/time.h', etc. (by default cscope will return all
-    " files that contain 'time.h' as part of their name).
-
-
-    " To do the first type of search, hit 'CTRL-\', followed by one of the
-    " cscope search types above (s,g,c,t,e,f,i,d).  The result of your cscope
-    " search will be displayed in the current window.  You can use CTRL-T to
-    " go back to where you were before the search.  
-    "
-
     nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
@@ -414,35 +367,6 @@ if has("cscope")
     nmap <C-@><C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
     nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
-
-
-    """"""""""""" key map timeouts
-    "
-    " By default Vim will only wait 1 second for each keystroke in a mapping.
-    " You may find that too short with the above typemaps.  If so, you should
-    " either turn off mapping timeouts via 'notimeout'.
-    "
-    "set notimeout 
-    "
-    " Or, you can keep timeouts, by uncommenting the timeoutlen line below,
-    " with your own personal favorite value (in milliseconds):
-    "
-    "set timeoutlen=4000
-    "
-    " Either way, since mapping timeout settings by default also set the
-    " timeouts for multicharacter 'keys codes' (like <F1>), you should also
-    " set ttimeout and ttimeoutlen: otherwise, you will experience strange
-    " delays as vim waits for a keystroke after you hit ESC (it will be
-    " waiting to see if the ESC is actually part of a key code like <F1>).
-    "
-    "set ttimeout 
-    "
-    " personally, I find a tenth of a second to work well for key code
-    " timeouts. If you experience problems and have a slow terminal or network
-    " connection, set it higher.  If you don't set ttimeoutlen, the value for
-    " timeoutlent (default: 1000 = 1 second, which is sluggish) is used.
-    "
-    "set ttimeoutlen=100
 endif
 
 " Clipper specific setting
@@ -476,6 +400,15 @@ nnoremap <Leader>cp :cprev<CR>
 
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>h :split<CR>
+
+" ipdb debugger
+function! Markline(lineNbr)
+  call clearmatches()
+  call matchadd('Search', '\%'.a:lineNbr.'l')
+  call cursor(a:lineNbr,0)
+  normal ml
+  normal zz
+endfunction
 
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 

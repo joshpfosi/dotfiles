@@ -1,0 +1,18 @@
+#compdef shell
+
+# This is a ZSH autocomplete file for my 'shell' alias to allow 'a4c containers'
+# based autocomplete
+
+_a4cContainerNicks() {
+   # Get the list of containers, and exclude the table header
+   # The next line should look like the following, so parse out the nick
+   # OWNER NICKNAME PROJECT CHANGE STATUS
+   compadd "$@" `a4c containers | tail -n +2 | sed -E 's/^'$USER'+\s+(\S+)\s.*/\1/'`
+}
+
+_shell() {
+   _a4cContainerNicks
+   return 0
+}
+
+_shell "$@"
