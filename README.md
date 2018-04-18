@@ -1,6 +1,8 @@
 # My Environment
 
-This repository is for my personal use in rapidly setting up my development environment and computer in general. `GOTCHAS.md` is a collection of random tidbits I've learned over time that I am trying to keep in one place. `rvmrc` and `vimrc` should obviously be moved to `~/.rvmrc` and `~/.vimrc`, respectively.
+This repository is for my personal use in rapidly setting up my development
+environment. `GOTCHAS.md` is a collection of random tidbits I've learned over time
+that I am trying to keep in one place.
 
 ## Installation
 
@@ -10,19 +12,19 @@ Run (assuming `git` is installed)
 cd && rm -rf ~/.vim && \
 git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
 ln -sf ~/.vim/.vimrc .vimrc && \
-ln -sf ~/.vim/.rvmrc .rvmrc && \
 ln -sf ~/.vim/.bashrc .bashrc && \
 ln -sf ~/.vim/.zshrc .zshrc && \
 ln -sf ~/.vim/.tmux.conf .tmux.conf && \
 ln -sf ~/.vim/.bash_profile ~/.bash_profile && \
 ln -sf ~/.vim/.sharedrc ~/.sharedrc && \
-ln -sf ~/.vim/josh.zsh-theme ~/.oh-my-zsh/themes/ && \
 ln -f ~/.vim/config .ssh/config && \
-sudo ln -f com.joshpfosi.clipper.plist \
-~/Library/LaunchAgents/com.joshpfosi.clipper.plist && \
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && \
+ln -sf ~/.vim/josh.zsh-theme ~/.oh-my-zsh/themes/ && \
 git config --global user.email "joshpfosi@gmail.com" && \
-git config --global user.name "joshpfosi"
+git config --global user.name "joshpfosi" && \
+sudo ln -f com.joshpfosi.clipper.plist \
+~/Library/LaunchAgents/com.joshpfosi.clipper.plist
 ```
 
 ## Software
