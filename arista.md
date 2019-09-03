@@ -33,6 +33,8 @@
 * aid/710 - Filing Bugs
 * aid/1872 - Accelerated Software Upgrade (ASU)
 * aid/1026 - Swi Workspace
+   * swi workspace trunk-view http://dist/Abuild/eos-trunk/i386_18/8453333/images/EOS.swi
+   * Don't foget to install debug info: debuginfo-install Rib-2.0.11-8450455.eostrunk.i686
 * aid/1711 - Release Notes
 * aid/1203 - Arcov
    * aid/2374
@@ -41,6 +43,24 @@
 * Flamegraph - https://docs.google.com/document/d/1uOFSuOqRvQsdzgPgaVrPneMlMp1Dy69ah1HNzgCZjKc/edit?ts=58adf6dd#
 * aid/365 - Putting Your Software on Hardware
 * aid/1161 - BGP Rib-out data structures
+* aid/4855 - Gated BGP RibOut Scalability (asang)
+* aid/1044 - Kernel Development and Debugging
+* aid/779 - Patch Panel
+* aid/3639 - MPCs
+* aid/4710 - HashMap 2018
+* aid/2809 - Notes on Gdb and debugging
+* aid/978 - Remote Debugging a DUT with GDB
+* aid/2674 - PBR Fallback Policy
+* aid/2099 - Tacc - Mount and Attr Logging Introduction
+   * mount flags, wcf
+* Configuration Session - https://docs.google.com/document/d/1tMgXxWvslymZRlvvWEDddr6_CdZWlvgJuNG7s2zvrT4/edit#
+   * CliSession/CliSession.py
+* aid/31 - Arista Bug Tracking Guide
+   * symptom trackers
+* aid/3397 - Leak Detection With heap checker
+   * asang
+* aid/3392 - Debugging memory leaks using PtrInterfaceDepTrack and LeakDiagnose.py
+   * jesper
 
 ## TOIs
 
@@ -729,6 +749,7 @@ stable EOS image
 * ArosTest cannot depend on ConfigSession directly due to a dependency cycle
    * Agent -> StateMgr -> ArosTest -> ConfigSession -> Agent
 * need to move replaceConfig to ConfigSession/ArosTestPlugin
+* a4 mock SandAcl --dumpOutputOnFailure --noclean
 
 # DUT Caretaking
 
@@ -779,49 +800,6 @@ vi /eng/etc/logre # Add 'preserveFailedState' to note and description of bug
 a4 submit -d "BUG 188278: Setting preserveFailedState"
 a4 choose -//eng/etc
 ```
-
-# A4 Update failure
-
-```
-[/home/joshpfosi/b165987/RPMS] Transaction Check Error:
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppAclPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppCpuQScalePTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppDynamicClassPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppDynamicQScalePTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppFragmentedPktPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppNonCpuTrafficPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppRebootPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppStaticQPTestLib.py from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppStaticQPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppStaticQSandTestLib.py from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/CoppStaticQSandTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/EcnPTestLib.py from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/EcnPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/QosDutTests.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/QosHitlessRestartPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]   file /usr/lib/python2.7/site-packages/QosPolicerPTestLib.pyc from install of QosTest-ptest-1.0.0-4326924.eostrunk.1.i686 conflicts with file from package Qos-ptest-1.0.2-4268059.joshpfosib1659870.i686
-[/home/joshpfosi/b165987/RPMS]
-[/home/joshpfosi/b165987/RPMS] Error Summary
-[/home/joshpfosi/b165987/RPMS] -------------
-[/home/joshpfosi/b165987/RPMS]
-+-> command returned 1 in 0:00:16.579649 ('sh -o pipefail -c prefix "[/home/joshpfosi/b165987/RPMS] " sudo env "LD_LIBRARY_PATH=" "PATH=/home/joshpfosi/tools/bin:/home/joshpfosi/i686/bin:/home/joshpfosi/tools/bin:/home/joshpfosi/i686/bin:/usr/lib/ccache:/home/joshpfosi/tools/bin:/home/joshpfosi/x86_64/bin:/usr/lib64/ccache:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/bin:/home/joshpfosi/.local/bin:/home/joshpfosi/bin:/home/joshpfosi/.local/bin:/home/joshpfosi/bin" yum -c /etc/Ayum.conf -y update 2>&1 | tee /tmp/tmpAGERq0')
-Maybe installing restricted python source packages
-+-> command returned 0 in 0:00:01.326972 ('sh -o pipefail -c prefix "[/home/joshpfosi/b165987/RPMS] " sudo env "LD_LIBRARY_PATH=" "PATH=/home/joshpfosi/tools/bin:/home/joshpfosi/i686/bin:/home/joshpfosi/tools/bin:/home/joshpfosi/i686/bin:/usr/lib/ccache:/home/joshpfosi/tools/bin:/home/joshpfosi/x86_64/bin:/usr/lib64/ccache:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/bin:/home/joshpfosi/.local/bin:/home/joshpfosi/bin:/home/joshpfosi/.local/bin:/home/joshpfosi/bin" yum -c /etc/Ayum.conf -y install Arbus-lib-pysrc Ark-pysrc Cli-lib-pysrc Mlag-pysrc Rib-lib-pysrc Strata-pysrc StrataL3-pysrc SysMgr-cli-pysrc Sysdb-pysrc SysdbAgent-pysrc TaccPyUtils-pysrc libtac-pysrc libtacutils-pysrc 2>&1 | tee /tmp/tmpmxcuLu')
-Updating installed rpms
-====================== Conflicts with file from package ======================
-  You are attempting to install RPMS with conflicting files with already
-  installed RPMs. It is normally caused by some files being moved across
-packages or RPMs without updating version and obsoletes in the spec file
-properly (see http://aid/10 for more details).
-
-  To work around this problem, try to uninstall the conflicting RPMs
-by 'sudo rpm -e --nodeps' and reinstall.
-==============================================================================
-ERROR: 'yum -c /etc/Ayum.conf' failed
-'a4 update --rpms' exited with nonzero status (1)
-```
-
-* fix via `a4 erase -y Qos-ptest`
 
 # Profiling
 
@@ -964,3 +942,104 @@ For catching regressions, this shows all changes that merged between two dates i
 * a4 files //src/ArBgp/eos-trunk/...@2016/12/18,2016/12/19 - That lists all the files that have changed on eos-trunk between those 2 dates - just one day in this example.
 
 * cat summary.txt| grep FAIL | awk '{print "Bgp/stest/"$2".py"}' > /tmp/failed.tests
+
+* Find build failures for a specific package and logscan them
+   * ap abuild -p eos-trunk -q --note=Bgp --logscan
+
+* Check out stest server logs: `a4 ssh stest107` + `/var/log/messages`
+* Create an EOS.swi: `a4 yum install EosImage`
+
+* Show unsupported GatedBgp commands in ArBgp: show bgp configuration unsupported
+* Python backtrace: `a4 yum install python-debuginfo --enablerepos=*`
+
+# Using revivegdb:
+
+* wget http://dist/Abuild/eos-trunk/i386_18/latest/RPMS/Phoenix-gdb.i686.rpm
+* yum install Phoenix-gdb.i686.rpm
+* revivegdb CORE
+
+* `a dir joshpfosi` - query LDAP for employee information
+
+* Coverage
+* a pj cov run -b PolicyMap -r PolicyMap /src/PolicyMap/test/PolicyMapVrfExpBreadthTest.py
+* "a project coverage run"
+
+* Installing RPMs on a DUT
+   * `Art yum setup` in container
+   * `sudo yum install -y <RPM>` on DUT
+      * e.g. `sudo yum install -y TrafficPolicy-cli`
+
+* a4c build error:
+
+Transaction Check Error:
+  file /usr/lib/python2.7/site-packages/TrafficPolicyTestLib.py conflicts between attempted installs of TrafficPolicy-testlib-1.0.2-10394286.joshpfosib3093870.i686 and TrafficPolicyTest-testlib-1.0.1-10394220.joshpfosib3093870.i686
+ file /usr/lib/python2.7/site-packages/TrafficPolicyTestLib.pyc conflicts between attempted installs of TrafficPolicy-testlib-1.0.2-10394286.joshpfosib3093870.i686 and TrafficPolicyTest-testlib-1.0.1-10394220.joshpfosib3093870.i686
+
+# Running autotest locally:
+
+Grap a dut, sanitize it and then use a command like this
+
+AutoTest --notify=joshpfosi --skipTestbedCheck -a --logDir=/tmp/ --testListFile=/tmp/tests --algorithm=fixed -d lp501 -n 100 -t 72000
+
+Create a file that contains entries of the form:
+Bgp/BgpBfdSsoEchoUnplannedTest.py --tamper=Rib v6  
+
+# Creating an EFT branch
+
+* See aid/21: https://docs.google.com/document/d/1XVvkI_3os0qBx05PubmKHLRTjjz1G0GiFgMxU8KlXTk/edit#heading=h.7vhvpd74ltvh
+* a4 project create -p eos-trunk cpu-policy-eft -d "EFT branch for the CPU traffic policy feature"
+   Writing new syncpoint (10611562)
+   Writing new inherited settings
+   Integrating parent project //src
+   Created cpu-policy-eft from eos-trunk@10611562.
+
+# arstack
+
+* If Python traceback fails: `a4 yum --enablerepo="*" -y install python-debuginfo`
+
+# Debugging Valgrind with gdb
+
+* Run the test
+* netns into test namespace
+* Attach to agent from within netns (`sudo gdb Rib`)
+* Then, follow instructions in Valgrind log (`target remote | /usr/lib/valgrind/../../bin/vgdb`)
+
+* Weird container issues from build Eos package:
+
+```
+ERROR: ld.so: object '/usr/lib/libGethostbyname2_calls_resinit.so' from /etc/ld.so.preload cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib/libGetaddrinfo_calls_resinit.so' from /etc/ld.so.preload cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib/libLocaltime_r_calls_tzset.so' from /etc/ld.so.preload cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib/libGethostbyname2_calls_resinit.so' from /etc/ld.so.preload cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib/libGetaddrinfo_calls_resinit.so' from /etc/ld.so.preload cannot be preloaded: ignored.
+```
+
+* `a4 yum reinstall EosImage`
+
+Testing stest on bs205
+* pkill -f "/usr/sbin/ crond"; pkill -f "python /usr/bin/Stestd"; pkill -f "python /usr/bin/AutoTest"; sudo pkill -f "python /usr/share/"; sudo rm -rv /var/run/Stestd/lock
+* sudo rpm -e AutoTest --nodeps
+* sudo yum install -y AutoTest
+
+* Debugging systest crashes
+   * swi workspace
+   * then, a4 debug -m SandAcl-3506.mem core.3509.1548726480.SandAcl
+   * get the .mem file from trace file
+
+# Creating an EFT
+
+* `a4 ssh dist`
+* `publishEosRelease --rc PROJECT CHANGE --platform PLATFORM`
+
+* E.g.
+
+* Find change-num from dist: http://dist/Abuild/bwang.ancile.43/i386_18/11365197/
+   * Use the most recent
+
+```
+~ @dist101.sjc> publishEosRelease --rc bwang.ancile.43 11365197 --platform i386_18
+Creating release candidate bwang.ancile.43 11365197
+This will take upwards of 15 minutes.
+```
+
+* NOTE: Then remove EOS-INT.swi

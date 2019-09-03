@@ -157,6 +157,7 @@ au BufNewFile,BufRead *.handlebars set filetype=html
 au BufNewFile,BufRead *.erb set filetype=html
 au BufNewFile,BufRead *.zsh-theme set filetype=zsh
 au BufNewFile,BufRead *.log set filetype=text
+au BufNewFile,BufRead *.notes set filetype=md
 
 " woohoo SYNTAX COLOURS
 syntax on
