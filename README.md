@@ -8,8 +8,9 @@ that I am trying to keep in one place.
 
 Run (assuming `git` is installed)
 ```
-git clone https://github.com/joshpfosi/dotfiles.git ~/.dotfiles
-sh ~/.dotfiles/install.sh
+export DOTFILES=~/.dotfiles
+git clone https://github.com/joshpfosi/dotfiles.git $DOTFILES
+sh $DOTFILES/install.sh
 ```
 
 ## Software
