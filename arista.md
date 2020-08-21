@@ -225,6 +225,7 @@ to Perforce
 for up to date README
 
 * Do the problems yourself FIRST (under `joshpfosi@recruit.arista.com:~/screening`)
+* Password: Amo11143!
 * Interview using Arista cloud server (recruit.arista.com)
 * `arecruit` - tool for managing candidates
 * Email template:
@@ -1043,3 +1044,28 @@ This will take upwards of 15 minutes.
 ```
 
 * NOTE: Then remove EOS-INT.swi
+
+# Coverage:
+
+* a pj cov -b ArBgp -r ArBgp --copyHtml /src/ArBgp/test/FwdTgtYieldingRouteConfigSmTest.py
+
+Disable all btests:
+
+a4 project setting buildCommand='a4 make --parallel=AUTO -p ALL product-nocheck'
+
+# Sharad's script example
+
+# TOGGLE_OVERRIDE=BgpLuIpRib=True Art on evpnrtr7 && cli evpnrtr7
+PHYDUT="1" PEER_DESC="100:v4,v4lu:;100:v4,v4lu:" /user/joshpfosi/bin/GenericGattBgpTopo.py -d evpnrtr7
+
+cmd = 'trace Bgp setting FwdTgt/*,BgpRibRouteConfigSm/*,BgpLuIpPlugin/*,BgpLuIpRibRouteConfigSm/*'
+dut.globalConfigCmdIs( cmd )
+dut.globalConfigCmdIs( 'mpls ip' )
+advertiseLu( 0, '4.4.4.4/32', '1.0.0.2', labels=[[40,41]] )
+advertise( 0, '7.7.7.7/32', nextHop='1.0.0.2' )
+advertise( 1, '7.7.7.7/32', nextHop='1.0.1.2' )
+dut.bgpConfigCmdIs( dutAsn, 'graceful-restart' )
+reconnect(0)
+
+# Best MPLS / SR explanation:
+* https://www.ietfjournal.org/segment-routing-cutting-through-the-hype-and-finding-the-ietfs-innovative-nugget-of-gold/

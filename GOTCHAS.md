@@ -36,6 +36,15 @@ git bisect run <cmd> <args>
 
 * `git rebase -i` and set commit to `edit` over `pick`
 
+# Merge conflicts
+
+* Quickly choosing remote changes: 
+
+```
+grep -lr '<<<<<<<' . | xargs git checkout --theirs
+git rebase --continue
+```
+
 ## Git SVN
 
 * Checkout remote branch: `git checkout -b <branch-name>-svn remotes/origin/<branch-name>`
