@@ -18,8 +18,10 @@ ln -sf $INSTALL_PATH/.gitconfig $HOME/.gitconfig
 
 # VIM plugins
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
-if [ -ne $VUNDLE ]
+if [ -f $VUNDLE ]
 then
+   echo "$VUNDLE already present; not cloning..."
+else
    git clone https://github.com/VundleVim/Vundle.vim.git $VUNDLE
 fi
 vim -E -c PluginInstall -c qa!
