@@ -5,17 +5,29 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# If we are not in a test, enable custom configuration
-if [ -z "$ARTEST_RANDSEED" ]
-then
-   if [ -e ~/.sharedrc ]
-   then
-      source ~/.sharedrc
-   fi
+export TERM=xterm-256color # Force proper coloring in tmux sessions
 
-   case $- in
-      # If shell option 'i' is set, check that we are not running in a test and /bin/zsh
-      # exists. If so, exec /bin/zsh.
-      (*i*) test -f /bin/zsh && exec /bin/zsh;;
-   esac
+export PYTHONPATH=$PYTHONPATH:~/.vim/pylibs
+
+alias vi="vim"
+# set -o emacs
+set -o vi
+
+# User specific aliases and functions
+export P4EDITOR=vim
+export EDITOR=vim
+export VISUAL=vim
+
+alias g=grep
+alias clip="nc -U ~/.clipper.sock"
+
+function us106() {
+   mosh joshpfosi@us106
+}
+
+export PATH=~/.vim:$PATH
+
+if [ -e ~/.bashrc.arista ]
+then
+   source ~/.bashrc.arista
 fi
