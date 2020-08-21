@@ -25,3 +25,4 @@ gated/gated-ctk/src/te/Makefile.in
 gated/unused-config.h.in
 *.pyc
 Makefile.in
+PolicyMap/go/testlib/PolicyMapTestLib.go

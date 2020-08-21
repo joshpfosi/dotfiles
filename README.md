@@ -12,6 +12,7 @@ Run (assuming `git` is installed)
 cd && rm -rf ~/.vim && \
 git clone https://github.com/joshpfosi/dotfiles.git ~/.vim && \
 ln -sf ~/.vim/.vimrc .vimrc && \
+ln -sf ~/.vim/.vimrc.arista ~/.vimrc.arista && \
 ln -sf ~/.vim/.bashrc .bashrc && \
 ln -sf ~/.vim/.bashrc.arista ~/.bashrc.arista && \
 ln -sf ~/.vim/.zshrc .zshrc && \

@@ -47,10 +47,17 @@ case "$?" in
       ;;
 esac
 
-# local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-PROMPT='$(git_prompt_info)%{$fg[cyan]%}%c%{$reset_color%}${nsname}${container}${chrootvar} '
-
+ZSH_THEME_GITAR_PROMPT_PREFIX="%{$fg_bold[blue]%}gitar:(%{$fg[red]%}"
+ZSH_THEME_GITAR_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%})"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
+function gitar_prompt_info() {
+   if [ -d ./.repo ]; then
+      echo "$ZSH_THEME_GITAR_PROMPT_PREFIX%{%}$(a git topics -l | grep "*" | cut -d" " -f3)$ZSH_THEME_GITAR_PROMPT_SUFFIX%)%{%} "
+   fi
+}
+
+PROMPT='$(gitar_prompt_info)$(git_prompt_info)%{$fg[cyan]%}%c%{$reset_color%}${nsname}${container}${chrootvar} '

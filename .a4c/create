@@ -2,24 +2,24 @@
 
 if [ -n "$WP" ]; then
    (
-   # TODO: We should not need to install zsh
-      a4 yum install -y --enablerepo="*" zsh &
-      a4 yum install -y --enablerepo="*" tmux &
-      a4 yum install -y --enablerepo="*" mailx &
-      a4 yum install -y --enablerepo="*" python-pip &
-      a4 yum install -y --enablerepo="*" python-ipdb &
-      a4 yum install -y Artacc &
-      a4 yum install -y git &
+      a4 yum install -y --enablerepo="*" zsh tmux mailx python-pip python-ipdb \
+      Artacc git mts-cli bc ArTacLSP &
 
       wait
+
+      # sudo pip install pycscope &
+      # sudo pip install isort &
+      arsudo pip install -qqq python-language-server
    ) &> /dev/null
 
-   sudo pip install pycscope
-
-   cd /src
-   if [ ! -f .gitignore ]; then
-      git a init
+   # Don't do this for Gitarband workspaces
+   if [ ! -d /src/.repo ]; then
+      cd /src
+      if [ ! -f .gitignore ]; then
+         git a init
+      fi
    fi
+
 
    nohup /home/$USER/.a4c/setupWs.sh &> /dev/null
 fi

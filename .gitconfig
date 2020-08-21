@@ -3,3 +3,19 @@
 	email = joshpfosi@arista.com
 [http]
    sslVerify = false
+[gitar]
+	configured = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	excludesFile = /etc/gitignore
+[mergetool]
+   keepBackup = false
+[credential]
+	helper = store
+[rebase]
+	autostash = true
+	autosquash = true

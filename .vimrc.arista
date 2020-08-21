@@ -1,6 +1,8 @@
 " This file is used to configure Vim on my user server at Arista
 
-Plugin 'Valloric/YouCompleteMe'
+" TODO: Remove after a few weeks Plugin 'Valloric/YouCompleteMe'
+Plugin 'https://gitlab.aristanetworks.com/ssarpal/vim-autotest-quicktrace'
+let g:autotest_quicktrace_tmp = '/tmp'
 
 " CtrlP only in specific projects
 " let g:ctrlp_user_command='find /src/RouteMap /src/Bgp /src/gated -type f && true %s'
@@ -16,14 +18,10 @@ au Filetype py,h,c,cpp,js match Overlength /\%85v.\+/
 set textwidth=85
 set colorcolumn=86
 
-au BufRead,BufNewFile *.tac,*.tin,*.itin set filetype=cpp
-let g:syntastic_disabled_filetypes=['cpp']
+au BufRead,BufNewFile *.qbi set filetype=python
 
 " The gated package has different tab conventions.
 autocmd BufRead,BufNewFile */gated-ctk/* set noexpandtab
-
-" map :AE to a4 edit
-command! AE :!a4 edit %:p
 
 function! s:getCurrentPackage()
    "gets full path of current filename. and extracts second path element
@@ -84,3 +82,41 @@ set errorformat=
       \[%.%#\]\ \%f:%l:\ %tarning:\ %m,
       \[%.%#\]\ \%f:%l:\ %m,
       \\[%.%#\]\ \"%f\"\\,\ line\ %l%*\\D%c%*[^\ ]\ %m,
+
+function! OpenGrokFile()
+   let l:oper = 'split ' " 'tabe '
+   let l:line = getline( '.' )
+   " file from opengrok output
+   if (l:line =~ '^\s\+\d\+\s\+/eos-trunk/src/\S\+:$')
+      let l:fields = matchlist( l:line, '\(/src/[^:]\+\)' )
+      if filereadable(l:fields[0])
+         execute l:oper . fnameescape(l:fields[0])
+      endif
+   else
+      " generic filename from the beginning of the line. must have "." in it
+      let l:fields = matchlist( l:line, '\([\.a-zA-Z\/_0-9]\+\.[a-zA-Z0-9_]\+\)' )
+      execute l:oper . fnameescape(l:fields[0])
+   endif
+endfunction
+
+nmap <F2> :call OpenGrokFile()<CR>
+
+function! WordUnderCursorOrDefault(cmd, ...)
+  	let Fn = function(a:cmd)
+
+  	if empty(a:0)
+    	call Fn(expand('<cword>'))
+  	else
+    	call Fn(join(a:000))
+  	endif
+endfunction
+
+function! Bug(bugId)
+	execute "new | read !a4 bugs -A --all-comments --comment-length 200000 --logre " . a:bugId
+   " Navigate to top of the buffer
+   execute "0"
+endfunction
+
+command! -nargs=* Bug call WordUnderCursorOrDefault('Bug', <f-args>)
+nnoremap <Leader>b :Bug<CR>
+command! -nargs=1 OGrok :tabe | :read !a grok -m 0 "<args>"
