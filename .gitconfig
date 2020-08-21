@@ -12,6 +12,7 @@
 	required = true
 [core]
 	excludesFile = /etc/gitignore
+   editor = vim
 [mergetool]
    keepBackup = false
 [credential]
