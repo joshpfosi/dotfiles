@@ -4,18 +4,29 @@ set -e
 set -x
 
 HOME=~
-DOTFILES=$HOME/.dotfiles
+INSTALL_PATH="$(dirname "${BASH_SOURCE[0]}")"
 
-ln -sf $DOTFILES/.vim/.vimrc $HOME/.vimrc
-ln -sf $DOTFILES/.bashrc $HOME/.bashrc
-ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
-ln -sf $DOTFILES/.bash_profile $HOME/.bash_profile 
-ln -sf $DOTFILES/.gitconfig $HOME/.gitconfig 
-git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim 
-vim -E -c PluginInstall -c q
+echo "Symlinking from $INSTALL_PATH to $HOME..."
 
-launchAgentsDir=$HOME/Library/LaunchAgents
-if [ -e $launchAgentsDir ]
+rm -rf $HOME/.vim
+ln -sf $INSTALL_PATH/.vim $HOME/.vim
+ln -sf $INSTALL_PATH/.vimrc $HOME/.vimrc
+ln -sf $INSTALL_PATH/.bashrc $HOME/.bashrc
+ln -sf $INSTALL_PATH/.tmux.conf $HOME/.tmux.conf
+ln -sf $INSTALL_PATH/.bash_profile $HOME/.bash_profile
+ln -sf $INSTALL_PATH/.gitconfig $HOME/.gitconfig
+
+# VIM plugins
+VUNDLE=$HOME/.vim/bundle/Vundle.vim
+if [ -ne $VUNDLE ]
 then
-   sudo ln -f com.joshpfosi.clipper.plist $launchAgentsDir/com.joshpfosi.clipper.plist
+   git clone https://github.com/VundleVim/Vundle.vim.git $VUNDLE
+fi
+vim -E -c PluginInstall -c qa!
+
+# Clipper set up
+LAUNCH_AGENTS=$HOME/Library/LaunchAgents
+if [ -e $LAUNCH_AGENTS ]
+then
+   sudo ln -f com.joshpfosi.clipper.plist $LAUNCH_AGENTS/com.joshpfosi.clipper.plist
 fi
