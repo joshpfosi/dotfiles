@@ -10,6 +10,7 @@ echo "Symlinking from $INSTALL_PATH to $HOME..."
 
 ln -sf $INSTALL_PATH/.vimrc $HOME/.vimrc
 ln -sf $INSTALL_PATH/.bashrc $HOME/.bashrc
+ln -sf $INSTALL_PATH/.tmux $HOME/.tmux
 ln -sf $INSTALL_PATH/.tmux.conf $HOME/.tmux.conf
 ln -sf $INSTALL_PATH/.bash_profile $HOME/.bash_profile
 ln -sf $INSTALL_PATH/.gitconfig $HOME/.gitconfig
