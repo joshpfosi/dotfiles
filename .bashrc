@@ -31,9 +31,23 @@ function bus101() {
 
 export PATH=~/bin:$PATH
 
-source .git-prompt.sh
+function gbInfo() {
+   if ! is-gb -q; then
+      return
+   fi
+   # Don't do this inside a git repo
+   if [ -d .git ]; then
+      return
+   fi
+   out=$(agm current-topic 2>&1 </dev/null)
+   if [[ $? -eq 0 ]]; then
+      echo " ($out)"
+   fi
+}
+
+source ~/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\w$(__git_ps1 " (%s)")\$ '
+export PS1='\w$(gbInfo)$(__git_ps1 " (%s)") \$ '
 
 if [ -e ~/.bashrc.arista ]
 then
