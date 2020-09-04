@@ -4,6 +4,7 @@
 export PATH=$HOME/gitar:$PATH:$HOME/.local/bin:$HOME/bin
 # For git paging
 export LESS=FRX
+export P4PORT=p4:1666
 
 # This function is used to determine if we are in an a4c workspace, a home container
 # or neither.
