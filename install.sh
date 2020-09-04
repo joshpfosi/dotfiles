@@ -14,6 +14,7 @@ ln -sf $INSTALL_PATH/.tmux $HOME/.tmux
 ln -sf $INSTALL_PATH/.tmux.conf $HOME/.tmux.conf
 ln -sf $INSTALL_PATH/.bash_profile $HOME/.bash_profile
 ln -sf $INSTALL_PATH/.gitconfig $HOME/.gitconfig
+ln -sf $INSTALL_PATH/.git-prompt.sh $HOME/.git-prompt.sh
 
 rm -rf $HOME/.vim
 ln -sf $INSTALL_PATH/.vim $HOME/.vim
