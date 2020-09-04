@@ -27,8 +27,9 @@ function us106() {
 
 export PATH=~/bin:$PATH
 
+source .git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+export PS1='\w$(__git_ps1 " (%s)")\$ '
 
 if [ -e ~/.bashrc.arista ]
 then
