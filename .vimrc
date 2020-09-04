@@ -43,7 +43,7 @@ let g:ale_linters = {
 "   'd'   called: find functions that function under cursor calls
 "
 nmap <C-\>s :ALEFindReferences<CR>
-nmap <C-\>6 :ALEGoToDefintion<CR>
+nmap <C-\>g :ALEGoToDefinition -vsplit<CR>
 "<C-R>=expand("<cword>")<CR><CR>	
 " nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
 " nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
@@ -322,9 +322,6 @@ nnoremap <C-y> :call system('nc -U ~/.clipper.sock', @0)<CR>
 " Disable that annoying "help" binding
 map <S-k> <Nop>
 
-" tmux style zoom feature
-nnoremap <Leader>z :tabnew %<CR>
-
 " Use python-mode in VIM 8 for simple python formatting
 let g:pymode_python = 'python'
 let g:pymode_trim_whitespaces = 0
@@ -363,6 +360,19 @@ nnoremap <Leader>cp :cprev<CR>
 
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>h :split<CR>
+nnoremap <Leader>z :tabnew %<CR>
+
+" Vim terminal bindings
+" noremap <Leader>vv :vert term<CR>
+" noremap <Leader>hh :term<CR>
+" noremap <Leader>c :tabnew<CR>:term<CR><C-W>k:q<CR>
+
+" Simulate tmux bindings
+" tnoremap <Leader>[ <C-W>N<CR>
+" tnoremap <Leader>v <C-W>N:vert term<CR><C-W>hi<C-W>l
+" tnoremap <Leader>h <C-W>N:term<CR><C-W>ki<C-W>j
+" tnoremap <Leader>z <C-W>N:tabnew %<CR>i
+" tnoremap <Leader>c <C-W>N:tabnew<CR>:term<CR><C-W>k:q<CR>
 
 " ipdb debugger
 function! Markline(lineNbr)
