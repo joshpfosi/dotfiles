@@ -1,50 +1,36 @@
 #!/bin/sh
+set -x
 /usr/bin/ssh-add -K
-retries=20
-echo ---
-j="0"
-server=$1
-sock=$2
-tunnel=$3
+
+launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
+rm -f ~/.clipper.sock
+launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
+
+launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
+rm -f ~/.clipper-bus101.sock
+launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
+
+setupTunnel() {
+   server=$1
+   tunnel=$2
+
+   sock=.clipper.sock
+   echo "removing $sock from server"
+   ssh $USER@$server "rm -f $sock"
+   echo "rm result = $?"
+   echo "restarting ssh tunnel to $tunnel"
+   ssh -vv -N -f "$tunnel"
+}
+
+cleanup() {
+   pkill -f "ssh.*-vv.*-N"
+}
+trap cleanup EXIT
+
 while true
 do
-	# verify connection to server. 
-	# try for $retries times before failing
-	echo "main loop starting j = $j"
-	i="0"
-	date
-	ssh -q $USER@$server echo
-	while test $? -gt 0 -a $i -lt $retries
-	do
-	   echo counter = $i
-	   i=$[$i+1]
-	   sleep 5 
-	   echo "Trying again..." 
-	   ssh -q $USER@$server echo
-	done
-
-	if test $i -ge $retries
-	then
-		echo "could not connect to $server after $retries retries. check clipper status"
-		if [[ $? -ne 0 ]]
-		then
-			echo "close requested. exiting.."
-			exit 1	
-		else
-			echo "retry requested. Restarting loop"
-			continue
-		fi
-
-	fi
-
-	echo "====== connection to $server successfull ====="
-	echo "removing $sock from server"
-	ssh $USER@$server "rm $sock"
-	echo "rm result = $?"
-	echo "restarting ssh tunnel to $tunnel"
-	ssh -vv -N "$tunnel"
-	echo "ssh tunnel collapsed. back to mainloop"
-j=$[$j+1]
-echo sleep 15
-sleep 15 
+   setupTunnel us106 clippertunnel
+   setupTunnel bus101 clippertunnel-bus101
+   sleep 600
+   cleanup
 done
