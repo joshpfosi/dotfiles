@@ -61,7 +61,9 @@ sudo cp clipper /usr/local/bin
 # Copy below plist file to ~/Library/LaunchAgents/com.joshpfosi
 
 launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
+launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
 launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
+launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
 ```
 
 ```xml
@@ -124,3 +126,9 @@ ssh us102
 # Misc
 
 * Use RSA encryption -- seems to play nicer than DSA with clipper
+
+# Troubleshooting
+
+If `reset_clipper` is timing out, grep for ssh sessions using 837{8,9}. Using -N
+sends the session to the background, so you may think you've killed it when you
+haven't. Kill any sessions and try again.
