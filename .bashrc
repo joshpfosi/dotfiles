@@ -25,6 +25,10 @@ function us106() {
    mosh joshpfosi@us106
 }
 
+function bus101() {
+   mosh joshpfosi@bus101
+}
+
 export PATH=~/bin:$PATH
 
 source .git-prompt.sh
