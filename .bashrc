@@ -29,8 +29,6 @@ function bus101() {
    mosh joshpfosi@bus101
 }
 
-export PATH=~/bin:$PATH
-
 function gbInfo() {
    if ! is-gb -q; then
       return
