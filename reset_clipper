@@ -6,31 +6,34 @@ launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
 rm -f ~/.clipper.sock
 launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
 
-launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
-rm -f ~/.clipper-bus101.sock
-launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
+# launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
+# rm -f ~/.clipper-bus101.sock
+# launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
 
 setupTunnel() {
    server=$1
-   tunnel=$2
+   host=$2
+   echo "Setting up $host on $server"
 
    sock=.clipper.sock
    echo "removing $sock from server"
    ssh $USER@$server "rm -f $sock"
    echo "rm result = $?"
-   echo "restarting ssh tunnel to $tunnel"
-   ssh -vv -N -f "$tunnel"
+   echo "restarting ssh host to $host"
+   ssh -vvv -f -N "$host"
 }
 
 cleanup() {
+   echo "Cleaning up..."
    pkill -f "ssh.*-vv.*-N"
+   pkill -f "joshpfosi@us219:22"
 }
 trap cleanup EXIT
 
 while true
 do
-   setupTunnel us106 clippertunnel
-   setupTunnel bus101 clippertunnel-bus101
+   setupTunnel us219 clippertunnel
+   # setupTunnel bus101 clippertunnel-bus101
    sleep 600
    cleanup
 done

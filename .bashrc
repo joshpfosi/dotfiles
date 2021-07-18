@@ -21,12 +21,19 @@ export VISUAL=vim
 alias g=grep
 alias clip="nc -U ~/.clipper.sock"
 
-function us106() {
-   mosh joshpfosi@us106
+function us219() {
+   mosh joshpfosi@us219
 }
 
 function bus101() {
    mosh joshpfosi@bus101
+}
+
+function bus() {
+   IP="10.242.224.5"
+   PORT=$1
+   echo "Moshing into $IP:$PORT (ssh -p $PORT joshpfosi@$IP)"
+   mosh --ssh "ssh -p $PORT" joshpfosi@$IP
 }
 
 export PATH=~/bin:$PATH

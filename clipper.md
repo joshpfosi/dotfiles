@@ -42,6 +42,8 @@ make install
 
 * Start the local `ssh` server by running:
 
+# NOTE: This is no longer needed!
+
 ```
 /home/joshpfosi/bin/sbin/sshd -p 8378
 ```
