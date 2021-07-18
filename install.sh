@@ -19,6 +19,21 @@ ln -sf $INSTALL_PATH/.git-prompt.sh $HOME/.git-prompt.sh
 rm -rf $HOME/.vim
 ln -sf $INSTALL_PATH/.vim $HOME/.vim
 
+echo "Installing homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+echo "Installing Vundle"
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+echo "Installing clipper"
+brew install clipper
+
+echo "Installing tmux"
+brew install tmux
+
+echo "Installing mosh"
+brew install mosh
+
 # VIM plugins
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
 if [ -e $VUNDLE ]
