@@ -49,4 +49,5 @@ LAUNCH_AGENTS=$HOME/Library/LaunchAgents
 if [ -e $LAUNCH_AGENTS ]
 then
    sudo ln -f com.joshpfosi.clipper.plist $LAUNCH_AGENTS/com.joshpfosi.clipper.plist
+   sudo ln -f com.joshpfosi.gpg.plist $LAUNCH_AGENTS/com.joshpfosi.gpg.plist
 fi

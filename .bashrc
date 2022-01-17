@@ -25,18 +25,10 @@ function us219() {
    mosh joshpfosi@us219
 }
 
-function bus101() {
-   mosh joshpfosi@bus101
-}
-
-function bus() {
-   IP="10.242.224.5"
-   PORT=$1
-   echo "Moshing into $IP:$PORT (ssh -p $PORT joshpfosi@$IP)"
-   mosh --ssh "ssh -p $PORT" joshpfosi@$IP
-}
-
 export PATH=~/bin:$PATH
+# Add /Users/joshpfosi/Library/Python/3.8/bin to PATH for arkey (GPG signing) as
+# it was installed there.
+export PATH=/Users/joshpfosi/Library/Python/3.8/bin:$PATH
 
 source .git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1

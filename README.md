@@ -58,3 +58,25 @@ or
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 -->
 * [Latex](http://tug.org/mactex/mactex-download.html)
+
+# Misc
+
+# Annoying Mac iCloud pop up in system preferences
+
+https://discussions.apple.com/thread/250786208:
+
+First, check there's nothing else there:
+```
+defaults read com.apple.systempreferences AttentionPrefBundleIDs
+```
+This should dump:
+```
+{
+    "com.apple.preferences.AppleIDPrefPane" = 1;
+}
+```
+Then, delete:
+```
+defaults delete com.apple.systempreferences AttentionPrefBundleIDs
+```
+Then, close System Preferences.

@@ -60,12 +60,10 @@ cd clipper
 go build
 sudo cp clipper /usr/local/bin
 
-# Copy below plist file to ~/Library/LaunchAgents/com.joshpfosi
+# Copy below plist file to ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
 
 launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
-launchctl unload -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
 launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper.plist
-launchctl load -w -S Aqua ~/Library/LaunchAgents/com.joshpfosi.clipper-bus101.plist
 ```
 
 ```xml

@@ -387,6 +387,10 @@ function! Markline(lineNbr)
   normal zz
 endfunction
 
+" Add support for viewing man pages in Vim via Man, e.g.
+"    :Man ssh
+runtime ftplugin/man.vim
+
 " Arista specific settings
 if filereadable(glob("~/.vimrc.arista")) 
    source ~/.vimrc.arista
