@@ -7,8 +7,6 @@
       <key>ProgramArguments</key>
       <array>
          <string>/usr/local/bin/clipper</string>
-         <string>--address</string>
-         <string>~/.clipper.sock</string>
          <string>--logfile</string>
          <string>~/.clipper.log</string>
       </array>

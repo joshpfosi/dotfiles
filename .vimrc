@@ -321,7 +321,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " Clipper specific setting
-nnoremap <C-y> :call system('nc -U ~/.clipper.sock', @0)<CR>
+nnoremap <C-y> :call system('nc localhost 8377', @0)<CR>
 
 " Disable that annoying "help" binding
 map <S-k> <Nop>

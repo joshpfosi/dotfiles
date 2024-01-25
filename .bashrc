@@ -19,18 +19,26 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias g=grep
-alias clip="nc -U ~/.clipper.sock"
+alias clip="nc localhost 8377"
 
 function us219() {
-   mosh joshpfosi@us219
+   mosh joshpfosi@us219.sjc.aristanetworks.com
+}
+
+function shell() {
+   HOST="joshpfosi-$(echo $1 | tr "._" "-")"
+   echo "mosh $HOST"
+   mosh $HOST
 }
 
 export PATH=~/bin:$PATH
 # Add /Users/joshpfosi/Library/Python/3.8/bin to PATH for arkey (GPG signing) as
 # it was installed there.
 export PATH=/Users/joshpfosi/Library/Python/3.8/bin:$PATH
+export PATH=".:$PATH"
+export PATH="$(go env GOPATH)/bin:$PATH"
 
-source .git-prompt.sh
+source $HOME/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\w$(__git_ps1 " (%s)")\$ '
 
